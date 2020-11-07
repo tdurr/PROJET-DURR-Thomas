@@ -1,0 +1,30 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#container-summary {
+    width: 100%;
+    min-height: 50vh;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: left;
+}
+
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}

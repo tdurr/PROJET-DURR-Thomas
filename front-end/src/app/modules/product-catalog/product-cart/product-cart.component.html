@@ -1,0 +1,27 @@
+<section id="container-table">
+    <table>
+        <tr>
+            <th>Nom du produit</th>
+            <th>Prix unitaire</th>
+            <th>Quantité</th>
+            <th>Prix total</th>
+            <th>Retirer</th>
+            <th>Diminuer quantité</th>
+            <th>Augmenter quantité</th>
+        </tr>
+        <tr *ngFor="let item of items | async">
+            <td>{{ item.name }}</td>
+            <td>{{ item.price }} €</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.price * item.quantity }} €</td>
+            <td><button type="button" class="btn btn-danger" (click)="RemoveFromCart(item)">Retirer</button></td>
+            <td><button type="button" class="btn btn-warning" (click)="LessQuantity(item)">Diminuer la quantité</button></td>
+            <td><button type="button" class="btn btn-success" (click)="AddToCart(item)">Augmenter la quantité</button></td>
+        </tr>
+    </table>
+    <div class="cart-infos">
+        <h4>Nombre d'articles : {{ nbOfItems | async }}</h4>
+        <h4>Valeur du panier : {{ netWorth | async }} €</h4>
+    </div>
+    <button type="submit" id ="empty-btn" class="btn btn-danger btn-lg btn-block" (click)="EmptyCart()">Vider mon panier</button>
+</section>

@@ -1,0 +1,92 @@
+<section id="form-section">
+    <form class="customerForm" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+        <legend id="form-title">Nouveau compte client</legend>
+        <label for="nom">Nom *</label> <input formControlName="nom" class="inputs form-control" type="text" id="nom" placeholder="Nom" [ngClass]="{'input-error': !nom.valid && nom.value, 'input-success': nom.valid}">
+        
+        <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="error"> 
+            <p *ngIf="nom.errors.required">Veuillez renseigner le champ.</p>
+            <p *ngIf="nom.errors.test">Entre 2 et 30 chars. Doit contenir uniquement des lettres.</p>
+        </div> 
+
+        <label for="prenom">Prénom *</label> <input formControlName="prenom" class="inputs form-control" type="text" id="prenom" placeholder="Prénom" [ngClass]="{'input-error': !prenom.valid && prenom.value, 'input-success': prenom.valid}">
+        
+        <div *ngIf="prenom.invalid && (nom.dirty || nom.touched)" class="error"> 
+            <p *ngIf="prenom.errors.required">Veuillez renseigner le champ.</p>
+            <p *ngIf="prenom.errors.test">Entre 2 et 30 chars. Doit contenir uniquement des lettres.</p>
+        </div> 
+        
+        <label for="adresse">Adresse *</label> <input formControlName="adresse" class="inputs form-control" type="text" id="adresse" placeholder="Adresse" [ngClass]="{'input-error': !adresse.valid && adresse.value, 'input-success': adresse.valid}">
+        
+        <div *ngIf="adresse.invalid && (adresse.dirty || adresse.touched)" class="error"> 
+            <p *ngIf="adresse.errors.required">Veuillez renseigner le champ.</p>
+            <p *ngIf="adresse.errors.test">Entre 5 et 50 chars. Seuls les lettres, chiffres et - , . *</p>
+        </div> 
+        
+        <label for="cp">Code postal *</label> <input formControlName="cp" class="inputs form-control" type="text" id="cp" placeholder="Code postal" [ngClass]="{'input-error': !cp.valid && cp.value, 'input-success': cp.valid}">
+        
+        <div *ngIf="cp.invalid && (cp.dirty || cp.touched)" class="error"> 
+            <p *ngIf="cp.errors.required">Veuillez renseigner le champ.</p>
+            <p *ngIf="cp.errors.test">Doit être un code postal français valide.</p>
+        </div> 
+        
+        <label for="ville">Ville *</label> <input formControlName="ville" class="inputs form-control" type="text" id="ville" placeholder="Ville" [ngClass]="{'input-error': !ville.valid && ville.value, 'input-success': ville.valid}">
+        
+        <div *ngIf="ville.invalid && (ville.dirty || ville.touched)" class="error"> 
+            <p *ngIf="ville.errors.required">Veuillez renseigner le champ.</p>
+            <p *ngIf="ville.errors.test">Entre 2 et 40 chars. Doit contenir uniquement des lettres et - ou "espaces".</p>
+        </div> 
+        
+        <label for="tel">Téléphone *</label> <input formControlName="tel" class="inputs form-control" type="tel" id="tel" placeholder="Téléphone" [ngClass]="{'input-error': !tel.valid && tel.value, 'input-success': tel.valid}">
+        
+        <div *ngIf="tel.invalid && (tel.dirty || tel.touched)" class="error"> 
+            <p *ngIf="tel.errors.required">Veuillez renseigner le champ.</p>
+            <p *ngIf="tel.errors.test">Doit être un numéro de téléphone français.</p>
+        </div>
+        
+        
+        <label for="email">E-mail *</label> <input formControlName="email" class="inputs form-control" type="email" id="email" placeholder="Email" [ngClass]="{'input-error': !email.valid && email.value, 'input-success': email.valid}">
+
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error"> 
+            <p *ngIf="email.errors.required">Veuillez renseigner le champ.</p>
+            <p *ngIf="email.errors.test">Doit être une adresse email type: test@gmail.com.</p>
+        </div>
+
+        <label for="civilite">Civilité *</label>
+        <div id="radios">
+            <label for="mr">Monsieur</label>
+            <input formControlName="civilite" type="radio" class="form-control" id="civilite" value="Monsieur">
+            <label for="mme">Madame</label>
+            <input formControlName="civilite" type="radio" class="form-control" id="civilite" value="Madame">
+        </div>
+
+        <div *ngIf="civilite.invalid && (civilite.dirty || civilite.touched)" class="error"> 
+            <p *ngIf="civilite.errors.required">Veuillez renseigner le champ.</p>
+        </div>
+        
+        <label for="login">Login *</label> <input formControlName="login" class="inputs form-control" type="login" id="login" placeholder="De 3 à 20 caractères" [ngClass]="{'input-error': !login.valid && login.value, 'input-success': login.valid}">
+        
+        <div *ngIf="login.invalid && (login.dirty || login.touched)" class="error"> 
+            <p *ngIf="login.errors.required">Veuillez renseigner le champ.</p>
+            <p *ngIf="login.errors.test">Entre 3 et 20 chars. Doit contenir uniquement des lettres, chiffres et - _</p>
+        </div> 
+        
+        <label for="pw">Mot de passe *</label> <input formControlName="pw" class="inputs form-control" type="password" id="pw" placeholder="8-32 caractères, minimum une majuscule, un chiffre et un caractère spécial" [ngClass]="{'input-error': !pw.valid && pw.value, 'input-success': pw.valid}">
+        
+        <div *ngIf="pw.invalid && (pw.dirty || pw.touched)" class="error"> 
+            <p *ngIf="pw.errors.required">Veuillez renseigner le champ.</p>
+            <p *ngIf="pw.errors.test">Entre 8 et 32 chars. Doit contenir au moins une majuscule, un chiffre et un caractère spécial.</p>
+        </div> 
+        
+        <label for="cpw">Confirmer mot de passe *</label> <input formControlName="cpw" class="inputs form-control" type="password" id="cpw" placeholder="Confirmer le mot de passe" [appPasswordMatch]="customerForm.get('pw').value" [champ]="customerForm.get('cpw')" [ngClass]="{'input-error': !cpw.valid && cpw.value, 'input-success': cpw.valid}">
+        
+        <div *ngIf="cpw.invalid && (cpw.dirty || cpw.touched)" class="error"> 
+            <p *ngIf="cpw.errors.required">Veuillez renseigner le champ.</p>
+            <p *ngIf="cpw.errors.different">La confirmation est différente du mot de passe.</p>
+        </div>
+        
+        <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block" [disabled]="!customerForm.valid">Confirmer</button>
+        <button type="button" id="btn-autofill" class="btn btn-warning btn-lg btn-block" (click)="fillInputs()">Saisie automatique</button>
+    </fieldset>
+    </form>
+</section>

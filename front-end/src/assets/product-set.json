@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Aventador",
+        "price": 338606,
+        "brand": "Lamborghini",
+        "category": "Supercar",
+        "hp": 700,
+        "torque": 690,
+        "image": "/assets/images/aventador.png"
+    },
+    {
+        "id": 2,
+        "name": "GTR",
+        "price": 105500,
+        "brand": "Nissan",
+        "category": "Supercar",
+        "hp": 485,
+        "torque": 587,
+        "image": "/assets/images/GTR.png"
+    },
+    {
+        "id": 3,
+        "name": "911 GT3 RS",
+        "price": 198335,
+        "brand": "Porsche",
+        "category": "Supercar",
+        "hp": 520,
+        "torque": 469,
+        "image": "/assets/images/GT3.png"
+    },
+    {
+        "id": 4,
+        "name": "XC60",
+        "price": 49230,
+        "brand": "Volvo",
+        "category": "SUV",
+        "hp": 304,
+        "torque": 440,
+        "image": "/assets/images/XC60.png"
+    },
+    {
+        "id": 5,
+        "name": "Clio",
+        "price": 11490,
+        "brand": "Renault",
+        "category": "Compacte",
+        "hp": 90,
+        "torque": 260,
+        "image": "/assets/images/clio.png"
+    },
+    {
+        "id": 6,
+        "name": "Boxster 987 S",
+        "price": 54472,
+        "brand": "Porsche",
+        "category": "Sport",
+        "hp": 280,
+        "torque": 320,
+        "image": "/assets/images/Boxster.png"
+    }
+]

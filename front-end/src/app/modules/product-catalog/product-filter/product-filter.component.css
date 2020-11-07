@@ -1,0 +1,15 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#price-filter {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  margin: 0;
+}

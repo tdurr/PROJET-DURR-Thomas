@@ -1,0 +1,21 @@
+<div id="container-summary">
+    <table>
+        <tr>
+            <th>Nom complet</th>
+            <th>Adresse</th>
+            <th>Téléphone</th>
+            <th>Email</th>
+            <th>Login</th>
+            <th>Password</th>
+        </tr>
+        <tr>
+            <td>{{ client.civilite }} {{ client.prenom }} {{ client.nom.toUpperCase() }}</td>
+            <td>{{ client.adresse }} {{ client.cp }} {{ client.ville }}</td>
+            <td>{{ client.tel | telephone }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.login }}</td>
+            <td>{{ client.pw }}</td>
+        </tr>
+    </table>
+    <!-- <button type="submit" id="delete-btn" class="btn btn-danger btn-lg btn-block" (click)="onDelete($event)">Supprimer mon compte</button>-->
+</div>

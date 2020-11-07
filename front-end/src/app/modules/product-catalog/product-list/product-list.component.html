@@ -1,0 +1,25 @@
+<div *ngIf="products">
+    <app-product-filter (filterEvent)="onFilterEvent($event)"></app-product-filter>
+</div>
+
+<section class="container">
+    <section class="products-grid">
+        <div class="product" *ngFor="let product of products | async | productsByName: nameFilter | productsByCategory: categoryFilter | productsByPrice: priceFilter">
+            <img [src]="product.image" [alt]="product.name"/>
+            <div class="product-specs">
+                <div class="text">
+                    <h4>{{product.brand}} {{product.name}}</h4>
+                    <p>Catégorie: {{product.category}}</p>
+                    <p>Prix: {{product.price}} €</p>
+                    <p>Puissance: {{product.hp}} cv</p>
+                    <p>Couple: {{product.torque}} Nm</p>
+                </div>
+                <div class="container-btn">
+                    <button class="btn btn-warning" [routerLink]="[product.id]">Fiche du produit</button>
+                    <button class="btn btn-success" (click)="AddToCart(product)">Ajouter au panier</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="snackbar">Produit ajouté au panier !</div>
+</section>

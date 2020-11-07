@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "Product set",
+    "type": "array",
+    "items": {
+        "title": "Product",
+        "type": "object",
+        "properties": {
+            "id": {
+                "description": "The unique identifier for a product",
+                "type": "number"
+            },
+            "name": {
+                "type": "string"
+            },
+            "price": {
+                "type": "number",
+                "minimum": 0,
+                "exclusiveMinimum": true
+            },
+            "brand": {
+                "type": "string"
+            },
+            "category": {
+                "type": "string"
+            },
+            "hp": {
+                "type": "number"
+            },
+            "torque": {
+                "type": "number"
+            },
+            "image": {
+                "type": "string"
+            }
+        },
+        "required": ["id", "name", "price", "brand", "category", "hp", "torque", "image"]
+    }
+}
