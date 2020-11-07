@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   url: '/assets/product-set.json',
+  apiUrl: 'https://tp05-tdr.herokuapp.com/',
   name: 'default'
 };
 
