@@ -1,14 +1,14 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Client } from './../modeles/Client';
+import { Client } from '../modeles/Client';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-form-client-account',
-  templateUrl: './form-client-account.component.html',
-  styleUrls: ['./form-client-account.component.css']
+  selector: 'app-client-register-form',
+  templateUrl: './client-register-form.component.html',
+  styleUrls: ['./client-register-form.component.css']
 })
-export class FormClientAccountComponent implements OnInit {
+export class ClientRegisterFormComponent implements OnInit {
   
   //@Output() newCustomerEvent: EventEmitter<Client> = new EventEmitter<Client>();
 

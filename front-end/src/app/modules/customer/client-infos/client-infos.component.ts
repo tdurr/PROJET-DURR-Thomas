@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Client } from './../modeles/Client';
+import { Client } from '../modeles/Client';
 
 @Component({
-  selector: 'app-summary-client-account',
-  templateUrl: './summary-client-account.component.html',
-  styleUrls: ['./summary-client-account.component.css']
+  selector: 'app-client-infos',
+  templateUrl: './client-infos.component.html',
+  styleUrls: ['./client-infos.component.css']
 })
-export class SummaryClientAccountComponent implements OnInit {
+export class ClientInfosComponent implements OnInit {
 
   //@Input() client: Client;
   //@Output() deleteCustomerEvent: EventEmitter<Client> = new EventEmitter<Client>();
