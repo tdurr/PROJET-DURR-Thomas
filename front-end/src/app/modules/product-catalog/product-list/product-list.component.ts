@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Product } from './../modeles/product';
+import { Product } from '../../../models/product';
 import { DataService } from './../services/data.service';
 import { Store } from '@ngxs/store';
-import { AddToCart } from './../actions/cart-action';
+import { AddToCart } from '../../../store/actions/cart-action';
 
 @Component({
   selector: 'app-product-list',

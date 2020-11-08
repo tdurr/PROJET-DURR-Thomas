@@ -6,7 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ClientHubComponent } from './client-hub/client-hub.component'
-import { CartState } from './modules/product-catalog/states/cart-state';
+import { CartState } from './store/states/cart-state';
 import { NgxsModule } from '@ngxs/store';
 
 @NgModule({

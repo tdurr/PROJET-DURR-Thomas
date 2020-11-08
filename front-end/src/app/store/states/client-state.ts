@@ -1,7 +1,7 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ClientStateModel } from './client-state-model';
 import { AddJWT, AddClient } from '../actions/client-action';
-import { Client } from '../modeles/Client';
+import { Client } from '../../models/Client';
 
 @State<ClientStateModel>({
     name: 'client',

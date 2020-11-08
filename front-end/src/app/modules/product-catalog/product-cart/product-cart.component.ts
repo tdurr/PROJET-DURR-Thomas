@@ -1,9 +1,9 @@
-import { CartItem } from './../modeles/cart-item';
-import { AddToCart, RemoveFromCart, EmptyCart, LessQuantity } from '../actions/cart-action';
+import { CartItem } from './../../../models/cart-item';
+import { AddToCart, RemoveFromCart, EmptyCart, LessQuantity } from '../../../store/actions/cart-action';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
-import { CartState } from './../states/cart-state';
+import { CartState } from '../../../store/states/cart-state';
 
 @Component({
   selector: 'app-product-cart',

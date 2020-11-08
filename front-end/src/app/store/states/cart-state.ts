@@ -1,5 +1,5 @@
 import { CartStateModel } from './cart-state-model';
-import { CartItem } from '../modeles/cart-item';
+import { CartItem } from './../../models/cart-item';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { AddToCart, RemoveFromCart, EmptyCart, LessQuantity } from '../actions/cart-action';
 

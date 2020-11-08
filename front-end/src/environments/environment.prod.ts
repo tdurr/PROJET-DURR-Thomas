@@ -1,4 +1,4 @@
-import { Product } from 'src/app/modules/product-catalog/modeles/product';
+import { Product } from 'src/app/models/product';
 
 export const environment = {
   production: true,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Client } from '../modeles/Client';
+import { Client } from '../../../models/Client';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { ClientState } from './../states/client-state';
+import { ClientState } from './../../../store/states/client-state';
 
 @Component({
   selector: 'app-client-infos',

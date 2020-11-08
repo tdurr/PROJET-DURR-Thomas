@@ -1,10 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Client } from '../modeles/Client';
+import { Client } from '../../../models/Client';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerService } from '../services/customer.service';
 import { Store } from '@ngxs/store';
-import { AddClient } from './../actions/client-action';
+import { AddClient } from '../../../store/actions/client-action';
 
 @Component({
   selector: 'app-client-register-form',

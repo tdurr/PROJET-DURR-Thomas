@@ -3,8 +3,8 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { CustomerService } from './../../customer/services/customer.service';
-import { ClientState } from './../../customer/states/client-state';
-import { AddJWT } from './../../customer/actions/client-action';
+import { ClientState } from './../../../store/states/client-state';
+import { AddJWT } from './../../../store/actions/client-action';
 
 @Component({
   selector: 'app-client-login-form',

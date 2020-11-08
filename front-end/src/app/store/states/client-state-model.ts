@@ -1,4 +1,4 @@
-import { Client } from '../modeles/Client';
+import { Client } from '../../models/Client';
 
 export class ClientStateModel {
     tokenJwt: string;
