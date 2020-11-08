@@ -27,7 +27,7 @@ export class ClientLoginFormComponent implements OnInit {
   }
 
   public tokenJwtObs: Observable<string>;
-  private userConnected: boolean;
+  public userConnected: boolean;
   public isSubmitted: boolean;
 
   constructor(private customerService: CustomerService, private store: Store) { }
@@ -48,6 +48,7 @@ export class ClientLoginFormComponent implements OnInit {
 
       if (response.body.success) {
         this.store.dispatch(new RegisterJWT(response.headers.get('Authorization')));
+        console.log(response.headers.get('Authorization'));
         this.userConnected = true;
       } 
       else {

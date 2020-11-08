@@ -1,5 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Client } from '../modeles/Client';
+import { Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { ClientState } from './../states/client-state';
 
 @Component({
   selector: 'app-client-infos',
@@ -8,18 +11,11 @@ import { Client } from '../modeles/Client';
 })
 export class ClientInfosComponent implements OnInit {
 
-  //@Input() client: Client;
-  //@Output() deleteCustomerEvent: EventEmitter<Client> = new EventEmitter<Client>();
-
-  public client : Client;
+  public clientObs : Observable<Client>;
   
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.client = history.state.clientData;
+    this.clientObs = this.store.select(ClientState.getClient);
   }
-
-  /*public onDelete($event: Client): void {
-    this.deleteCustomerEvent.emit(this.client);
-  } */
 }

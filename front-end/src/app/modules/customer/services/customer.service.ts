@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from './../../../../environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Client } from './../../customer/modeles/Client';
 
 @Injectable({
@@ -25,18 +25,19 @@ export class CustomerService {
       ).toPromise();
   }
 
-  register(account: Account): Promise<Account> {
+  async register(client: Client): Promise<Client> {
     let body = new URLSearchParams();
-    body.set('account', JSON.stringify(account));
+    body.set('client', JSON.stringify(client));
 
-    return this.http.post<any>(
-      environment.apiUrl + 'users/register',
+    const val = await this.http.post<any>(
+      environment.apiUrl + 'user/register',
       body.toString(),
       {
         headers: { 'content-type': 'application/x-www-form-urlencodedgit' },
       }
     )
-    .toPromise()
-    .then<Account>(val => JSON.parse(val.account));
+      .toPromise();
+    const result: Client = JSON.parse(val.client);
+    return result;
   }
 }

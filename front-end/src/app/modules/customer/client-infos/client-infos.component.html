@@ -8,7 +8,7 @@
             <th>Login</th>
             <th>Password</th>
         </tr>
-        <tr>
+        <tr *ngIf="(clientObs | async) as client">
             <td>{{ client.civilite }} {{ client.prenom }} {{ client.nom.toUpperCase() }}</td>
             <td>{{ client.adresse }} {{ client.cp }} {{ client.ville }}</td>
             <td>{{ client.tel | telephone }}</td>

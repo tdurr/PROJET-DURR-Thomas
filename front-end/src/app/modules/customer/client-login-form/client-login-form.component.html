@@ -25,9 +25,8 @@
         </fieldset>
     </form>
 
-    <p>Token : {{ tokenJwtObs | async }}</p>
-    <p>Information : Une fois que la connexion a réussie, le token est stocké dans le store et le formulaire est désactivé.</p>
-    <p>Information : Pour le test, les identifiants sont tdr / motdepasse</p>
-    <button type="button" class="btn btn-primary" (click)="onResetToken()" >Réinitialiser le token JWT</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block" (click)="onResetToken()" >Réinitialiser le token JWT</button>
+    <h4>Token : {{ (tokenJwtObs | async) }}</h4>
+    <p>Information : Pour tester faire tdr/motdepasse</p>
 
 </section>

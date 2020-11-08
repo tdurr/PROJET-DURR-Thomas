@@ -2,7 +2,6 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ClientStateModel } from './client-state-model';
 import { RegisterJWT, RegisterClient } from '../actions/client-action';
 import { Client } from '../modeles/Client';
-import { Injectable } from '@angular/core';
 
 @State<ClientStateModel>({
     name: 'client',
@@ -19,7 +18,7 @@ export class ClientState {
     }
 
     @Selector()
-    static getAccount(state: ClientStateModel): Client {
+    static getClient(state: ClientStateModel): Client {
         return state.client;
     }
 

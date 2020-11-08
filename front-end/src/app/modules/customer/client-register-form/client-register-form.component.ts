@@ -2,6 +2,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Client } from '../modeles/Client';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomerService } from '../services/customer.service';
+import { Store } from '@ngxs/store';
+import { RegisterClient } from './../actions/client-action';
 
 @Component({
   selector: 'app-client-register-form',
@@ -70,7 +73,7 @@ export class ClientRegisterFormComponent implements OnInit {
     return this.customerForm.get('cpw');
   }
   
-  constructor(private router: Router) { 
+  constructor(private router: Router, private customerService: CustomerService, private store: Store) { 
    }
 
   ngOnInit(): void {
@@ -95,13 +98,23 @@ export class ClientRegisterFormComponent implements OnInit {
       this.customerForm.value.pw
      )
     
+
+    this.customerService.register(newClient).then((c) => {
+      this.store.dispatch(new RegisterClient(c));
+      this.router.navigate(['customer/infos']);
+    }).catch(error => {
+      console.error("Erreur de création du compte");
+    })
+  }
+  
+/*
     //this.newCustomerEvent.emit(newClient);
     this.router.navigate(['customer/infos'], {
       state: {
         clientData: newClient
       }
     });
-  }
+  } */
 
   fillInputs(): void {
     this.customerForm.controls.nom.setValue('DURR');

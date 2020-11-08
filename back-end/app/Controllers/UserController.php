@@ -21,18 +21,16 @@ class UserController
                 "success" => false
             ]));
             return $response
-                ->withHeader("Content-Type", "application/json");
+                ->withHeader("Content-Type", "application/json")
+                ->withStatus(401);
         }
 
         $issuedAt = time();
 
         $payload = [
-            "user" => [
-                "id" => $_ENV["ID"],
-                "email" => $_ENV["EMAIL"]
-            ],
+            "userId" => 1,
             "iat" => $issuedAt,
-            "exp" => $issuedAt + 60 // 60 secondes
+            "exp" => $issuedAt + 60
         ];
 
         $token_jwt = JWT::encode($payload, $_ENV["JWT_SECRET"], "HS256");
@@ -40,9 +38,7 @@ class UserController
         $response->getBody()->write(json_encode([
             "success" => true,
             "user" => [
-                "id" => $_ENV["ID"],
                 "login" => $_ENV["LOGIN"],
-                "email" => $_ENV["EMAIL"],
             ]
         ]));
         return $response
@@ -54,12 +50,7 @@ class UserController
     {
         $user = $request->getParsedBody();
 
-        $result = [
-            "success" => true,
-            "user" => $user
-        ];
-
-        $response->getBody()->write(json_encode($result));
+        $response->getBody()->write(json_encode($user));
         return $response
             ->withHeader("Content-Type", "application/json");
     }

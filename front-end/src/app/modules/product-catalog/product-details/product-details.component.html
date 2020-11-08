@@ -1,6 +1,6 @@
-<section *ngIf="productObs | async" id="container-table">
-    <img [src]="(productObs | async)?.image" [alt]="(productObs | async)?.name"/>
-    <h3 id="car-designation">{{ (productObs | async)?.brand }} {{ (productObs | async)?.name }}</h3>
+<section *ngIf="(productObs | async) as product" id="container-table">
+    <img [src]="product.image" [alt]="product.name"/>
+    <h3 id="car-designation">{{ product.brand }} {{ product.name }}</h3>
     <table>
         <tr>
             <th>Catégorie</th>
@@ -9,12 +9,12 @@
             <th>Couple</th>
         </tr>
         <tr>
-            <td>{{ (productObs | async)?.category }}</td>
-            <td>{{ (productObs | async)?.price }} €</td>
-            <td>{{ (productObs | async)?.hp }} cv</td>
-            <td>{{ (productObs | async)?.torque }} nm</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.price }} €</td>
+            <td>{{ product.hp }} cv</td>
+            <td>{{ product.torque }} nm</td>
         </tr>
     </table>
     <div id="snackbar">Produit ajouté au panier !</div>
-    <button id ="add-btn" class="btn btn-success btn-lg btn-block" (click)="AddToCart(productObs)">Ajouter au panier</button>
+    <button id ="add-btn" class="btn btn-success btn-lg btn-block" (click)="AddToCart(product)">Ajouter au panier</button>
 </section>
