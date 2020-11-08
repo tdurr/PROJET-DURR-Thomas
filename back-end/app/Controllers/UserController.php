@@ -16,7 +16,7 @@ class UserController
         $login = $data["login"] ?? "";
         $password = $data["password"] ?? "";
 
-        if ($login != $_ENV["ADMIN_LOGIN"] || $password != $_ENV["ADMIN_PASSWORD"]) {
+        if ($login != $_ENV["LOGIN"] || $password != $_ENV["PASSWORD"]) {
             $response->getBody()->write(json_encode([
                 "success" => false
             ]));
@@ -28,8 +28,8 @@ class UserController
 
         $payload = [
             "user" => [
-                "id" => $_ENV["ADMIN_ID"],
-                "email" => $_ENV["ADMIN_EMAIL"]
+                "id" => $_ENV["ID"],
+                "email" => $_ENV["EMAIL"]
             ],
             "iat" => $issuedAt,
             "exp" => $issuedAt + 60 // 60 secondes
@@ -40,9 +40,9 @@ class UserController
         $response->getBody()->write(json_encode([
             "success" => true,
             "user" => [
-                "id" => $_ENV["ADMIN_ID"],
-                "login" => $_ENV["ADMIN_LOGIN"],
-                "email" => $_ENV["ADMIN_EMAIL"],
+                "id" => $_ENV["ID"],
+                "login" => $_ENV["LOGIN"],
+                "email" => $_ENV["EMAIL"],
             ]
         ]));
         return $response

@@ -16,11 +16,11 @@
                 <p *ngIf="password.errors.required">Veuillez renseigner votre mot de passe.</p>
             </div> 
 
-            <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block" [disabled]="!loginForm.valid">Se connecter</button>
+            <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block">Se connecter</button>
 
             <div *ngIf="loginForm.invalid && isSubmitted" class="error"> 
                 <p *ngIf="loginForm.errors && loginForm.errors.denied">Informations invalides</p>
-                <p *ngIf="loginForm.errors && loginForm.errors.apiError">Erreur de connexion en lien avec l'API</p>
+                <p *ngIf="loginForm.errors && loginForm.errors.apiError">Erreur de connexion API reponse false</p>
             </div> 
 
         </fieldset>
@@ -28,7 +28,7 @@
 
     <p>Token : {{ tokenJwtObs | async }}</p>
     <p>Information : Une fois que la connexion a réussie, le token est stocké dans le store et le formulaire est désactivé.</p>
-    <p>Information : Pour le test, les identifiants sont tdr / P@$$w0rd</p>
+    <p>Information : Pour le test, les identifiants sont tdr / motdepasse</p>
     <button type="button" class="btn btn-primary" (click)="onResetToken()" >Réinitialiser le token JWT</button>
 
 </section>

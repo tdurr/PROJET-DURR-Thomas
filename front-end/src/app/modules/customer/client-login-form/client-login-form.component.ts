@@ -15,7 +15,7 @@ export class ClientLoginFormComponent implements OnInit {
 
   loginForm = new FormGroup ({
     login : new FormControl('', [Validators.required]),
-    pw : new FormControl('', [Validators.required])
+    password : new FormControl('', [Validators.required])
   });
 
   get login(): AbstractControl {

@@ -19,7 +19,7 @@ export class CustomerService {
       environment.apiUrl + 'user/login',
       body.toString(),
       {
-        headers: { 'content-type': 'application/form-data' },
+        headers: { 'content-type': 'application/x-www-form-urlencoded' },
         observe: 'response'
       }
       ).toPromise();
@@ -33,7 +33,7 @@ export class CustomerService {
       environment.apiUrl + 'users/register',
       body.toString(),
       {
-        headers: { 'content-type': 'application/form-data' },
+        headers: { 'content-type': 'application/x-www-form-urlencoded' },
       }
     )
     .toPromise()
