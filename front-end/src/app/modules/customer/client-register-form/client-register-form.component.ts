@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 import { Router } from '@angular/router';
 import { CustomerService } from '../services/customer.service';
 import { Store } from '@ngxs/store';
-import { RegisterClient } from './../actions/client-action';
+import { AddClient } from './../actions/client-action';
 
 @Component({
   selector: 'app-client-register-form',
@@ -99,8 +99,8 @@ export class ClientRegisterFormComponent implements OnInit {
      )
     
 
-    this.customerService.register(newClient).then((c) => {
-      this.store.dispatch(new RegisterClient(c));
+    this.customerService.register(newClient).then((client) => {
+      this.store.dispatch(new AddClient(client));
       this.router.navigate(['customer/infos']);
     }).catch(error => {
       console.error("Erreur de création du compte");

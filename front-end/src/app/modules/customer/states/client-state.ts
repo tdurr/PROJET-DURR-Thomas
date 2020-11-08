@@ -1,13 +1,13 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ClientStateModel } from './client-state-model';
-import { RegisterJWT, RegisterClient } from '../actions/client-action';
+import { AddJWT, AddClient } from '../actions/client-action';
 import { Client } from '../modeles/Client';
 
 @State<ClientStateModel>({
     name: 'client',
     defaults: {
         tokenJwt: '',
-        client: null,
+        infos: null,
     }
 })
 
@@ -19,16 +19,16 @@ export class ClientState {
 
     @Selector()
     static getClient(state: ClientStateModel): Client {
-        return state.client;
+        return state.infos;
     }
 
-    @Action(RegisterJWT)
-    addJWT( { patchState }: StateContext<ClientStateModel>, { payload }: RegisterJWT ): void {
+    @Action(AddJWT)
+    addJWT( { patchState }: StateContext<ClientStateModel>, { payload }: AddJWT ): void {
         patchState({ tokenJwt: payload });
     }
 
-    @Action(RegisterClient)
-    addClient( { patchState }: StateContext<ClientStateModel>, { payload }: RegisterClient ): void {
-        patchState({ client: payload });
+    @Action(AddClient)
+    addClient( { patchState }: StateContext<ClientStateModel>, { payload }: AddClient ): void {
+        patchState({ infos: payload });
     }
 }

@@ -33,7 +33,7 @@ export class CustomerService {
       environment.apiUrl + 'user/register',
       body.toString(),
       {
-        headers: { 'content-type': 'application/x-www-form-urlencodedgit' },
+        headers: { 'content-type': 'application/x-www-form-urlencoded' },
       }
     )
       .toPromise();

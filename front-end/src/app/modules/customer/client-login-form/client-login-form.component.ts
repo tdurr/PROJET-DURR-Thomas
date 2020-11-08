@@ -4,7 +4,7 @@ import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { CustomerService } from './../../customer/services/customer.service';
 import { ClientState } from './../../customer/states/client-state';
-import { RegisterJWT } from './../../customer/actions/client-action';
+import { AddJWT } from './../../customer/actions/client-action';
 
 @Component({
   selector: 'app-client-login-form',
@@ -47,7 +47,7 @@ export class ClientLoginFormComponent implements OnInit {
     this.customerService.login( this.loginForm.value.login, this.loginForm.value.password ).then(response => {
 
       if (response.body.success) {
-        this.store.dispatch(new RegisterJWT(response.headers.get('Authorization')));
+        this.store.dispatch(new AddJWT(response.headers.get('Authorization')));
         console.log(response.headers.get('Authorization'));
         this.userConnected = true;
       } 
@@ -60,7 +60,7 @@ export class ClientLoginFormComponent implements OnInit {
   }
 
   onResetToken(): void {
-    this.store.dispatch(new RegisterJWT(''));
+    this.store.dispatch(new AddJWT(''));
     this.userConnected = false;
   }
 }

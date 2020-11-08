@@ -9,7 +9,6 @@ import { TelephonePipe } from './pipes/telephone.pipe';
 import { PasswordMatchDirective } from './directives/password-match.directive';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerService } from './../customer/services/customer.service';
-import { ClientHubComponent } from './client-hub/client-hub.component';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -21,8 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     ClientInfosComponent,
     TelephonePipe,
     PasswordMatchDirective,
-    ClientLoginFormComponent,
-    ClientHubComponent
+    ClientLoginFormComponent
   ],
   imports: [
     CommonModule,
