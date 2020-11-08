@@ -2,7 +2,12 @@ import { CartStateModel } from './cart-state-model';
 import { CartItem } from './../../models/cart-item';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { AddToCart, RemoveFromCart, EmptyCart, LessQuantity } from '../actions/cart-action';
+import { Injectable } from '@angular/core';
 
+
+@Injectable({
+    providedIn: 'root'
+})
 @State<CartStateModel>({
     name: 'cart',
     defaults: {
