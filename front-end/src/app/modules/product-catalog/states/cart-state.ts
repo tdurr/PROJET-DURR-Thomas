@@ -83,7 +83,7 @@ export class CartState {
     }
 
     @Action(EmptyCart)
-    clear( { getState, patchState }: StateContext<CartStateModel> ): void {
+    empty( { getState, patchState }: StateContext<CartStateModel> ): void {
         const state = getState();
 
         patchState( { items: [] } );

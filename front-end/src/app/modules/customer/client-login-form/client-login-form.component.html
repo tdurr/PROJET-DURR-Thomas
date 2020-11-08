@@ -19,8 +19,7 @@
             <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block">Se connecter</button>
 
             <div *ngIf="loginForm.invalid && isSubmitted" class="error"> 
-                <p *ngIf="loginForm.errors && loginForm.errors.denied">Informations invalides</p>
-                <p *ngIf="loginForm.errors && loginForm.errors.apiError">Erreur de connexion API reponse false</p>
+                <p *ngIf="loginForm.errors && loginForm.errors.apiError">Informations invalides</p>
             </div> 
 
         </fieldset>

@@ -47,7 +47,7 @@ export class ClientLoginFormComponent implements OnInit {
     this.customerService.login( this.loginForm.value.login, this.loginForm.value.password ).then(response => {
 
       if (response.body.success) {
-        this.store.dispatch(new RegisterJWT(response.headers.get('authorization')));
+        this.store.dispatch(new RegisterJWT(response.headers.get('Authorization')));
         this.userConnected = true;
       } 
       else {
@@ -56,11 +56,6 @@ export class ClientLoginFormComponent implements OnInit {
         });
       }
     })
-    .catch(error => {
-      this.loginForm.setErrors({
-        denied: true
-      });
-    });
   }
 
   onResetToken(): void {

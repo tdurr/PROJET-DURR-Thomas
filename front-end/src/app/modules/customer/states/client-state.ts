@@ -25,15 +25,11 @@ export class ClientState {
 
     @Action(RegisterJWT)
     addJWT( { patchState }: StateContext<ClientStateModel>, { payload }: RegisterJWT ): void {
-        patchState({
-            tokenJwt: payload
-        });
+        patchState({ tokenJwt: payload });
     }
 
     @Action(RegisterClient)
-    addAccount( { patchState }: StateContext<ClientStateModel>, { payload }: RegisterClient ): void {
-        patchState({
-            client: payload
-        });
+    addClient( { patchState }: StateContext<ClientStateModel>, { payload }: RegisterClient ): void {
+        patchState({ client: payload });
     }
 }
