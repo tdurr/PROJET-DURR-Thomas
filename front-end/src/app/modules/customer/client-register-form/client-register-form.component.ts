@@ -78,6 +78,10 @@ export class ClientRegisterFormComponent implements OnInit {
 
   onSubmit(): void{
 
+    if (!this.customerForm.valid) {
+      return;
+    }
+
     const newClient : Client = new Client(
       this.customerForm.value.nom,
       this.customerForm.value.prenom,

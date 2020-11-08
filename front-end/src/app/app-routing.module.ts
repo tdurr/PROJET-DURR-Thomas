@@ -22,6 +22,11 @@ const routes: Routes = [
     redirectTo: 'product/list', 
     pathMatch: 'full'
   },
+  /*{
+    path: '**', 
+    redirectTo: 'product/list', 
+    pathMatch: 'full'
+  }, */
 ];
 
 @NgModule({

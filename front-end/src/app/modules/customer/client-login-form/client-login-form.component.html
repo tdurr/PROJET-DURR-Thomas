@@ -1,0 +1,34 @@
+<section id="form-section">
+
+    <form id="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <fieldset>
+            <legend id="form-title">Connexion</legend>
+
+            <input formControlName="login" class="inputs form-control" type="text" id="login" placeholder="Login">
+        
+            <div *ngIf="login.invalid && (login.dirty || login.touched)" class="error"> 
+                <p *ngIf="login.errors.required">Veuillez renseigner votre identifiant.</p>
+            </div> 
+
+            <input formControlName="password" class="inputs form-control" type="password" id="password" placeholder="Mot de passe">
+        
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error"> 
+                <p *ngIf="password.errors.required">Veuillez renseigner votre mot de passe.</p>
+            </div> 
+
+            <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block" [disabled]="!loginForm.valid">Se connecter</button>
+
+            <div *ngIf="loginForm.invalid && isSubmitted" class="error"> 
+                <p *ngIf="loginForm.errors && loginForm.errors.denied">Informations invalides</p>
+                <p *ngIf="loginForm.errors && loginForm.errors.apiError">Erreur de connexion en lien avec l'API</p>
+            </div> 
+
+        </fieldset>
+    </form>
+
+    <p>Token : {{ tokenJwtObs | async }}</p>
+    <p>Information : Une fois que la connexion a réussie, le token est stocké dans le store et le formulaire est désactivé.</p>
+    <p>Information : Pour le test, les identifiants sont tdr / P@$$w0rd</p>
+    <button type="button" class="btn btn-primary" (click)="onResetToken()" >Réinitialiser le token JWT</button>
+
+</section>
