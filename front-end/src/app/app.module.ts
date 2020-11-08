@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ClientHubComponent } from './client-hub/client-hub.component'
 import { CartState } from './store/states/cart-state';
+import { ClientState } from './store/states/client-state';
 import { NgxsModule } from '@ngxs/store';
 
 @NgModule({
@@ -20,7 +21,7 @@ import { NgxsModule } from '@ngxs/store';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgxsModule.forRoot([CartState])
+    NgxsModule.forRoot([CartState, ClientState])
   ],
   bootstrap: [AppComponent]
 })
