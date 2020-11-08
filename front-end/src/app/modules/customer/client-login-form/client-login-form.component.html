@@ -10,13 +10,18 @@
                 <p *ngIf="login.errors.required">Veuillez renseigner votre identifiant.</p>
             </div> 
 
-            <input formControlName="password" class="inputs form-control" type="password" id="password" placeholder="Mot de passe">
-        
+            <div class="input-group mb-3 div-pw">
+                <input formControlName="password" class="inputs form-control" [type]="hide ? 'password' : 'text'" id="password" placeholder="Mot de passe">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="showPassword()">Afficher</button>
+                </div>
+            </div>
+              
             <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error"> 
                 <p *ngIf="password.errors.required">Veuillez renseigner votre mot de passe.</p>
             </div> 
 
-            <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block">Se connecter</button>
+            <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block" [disabled]="!loginForm.valid">Se connecter</button>
 
             <div *ngIf="loginForm.invalid && isSubmitted" class="error"> 
                 <p *ngIf="loginForm.errors && loginForm.errors.apiError">Informations invalides</p>
@@ -27,7 +32,7 @@
 
     <button type="button" class="btn btn-warning btn-lg btn-block" (click)="onResetToken()" >Réinitialiser le token</button>
     <br>
-    <p>Information : Pour tester faire tdr/motdepasse</p>
-    <h4>Token : {{ (tokenJwtObs | async) }}</h4>
+    <h4>Pour tester success faire <code>tdr</code> / <code>P@$$w0rd</code></h4>
+    <p>Token : {{ (tokenJwtObs | async) }}</p>
 
 </section>

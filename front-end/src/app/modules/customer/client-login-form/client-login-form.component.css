@@ -23,7 +23,6 @@
 
 .inputs{
     display: block;
-    margin-bottom: 20px;
 }
 
 label {
@@ -31,7 +30,7 @@ label {
 }
 
 .error {
-    background-color: #e82d2d;
+    background-color: #B00020;
     border-radius: 10px;
     text-align: center;
     margin-bottom: 20px;
@@ -40,11 +39,14 @@ label {
 
 .error p {
     display: inline-block;
-    font-size: small;
     padding: 5px;
     color: white;
     font-style: italic;
 
 } #btn-submit {
     margin-bottom: 20px;
+}
+
+.div-pw {
+    margin-top: 20px;
 }
