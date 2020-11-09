@@ -21,7 +21,9 @@ php -S localhost:8080 -t public
 L'API est aussi déployée sur `Heroku` pour que l'utilisation soit plus pratique pour tout le monde. Du coup seule l'app Angular est à lancer avec un `ng serve --open`. Les en-têtes HTTP sont totalement gérées côté serveur plutôt que d'utiliser un proxy sur le front-end Angular ce qui est la bonne pratique.
 
 ```diff
-- Lors de la première utilisation depuis un certain temps il se peut qu'il faille patienter quelques secondes avant d'avoir une réponse de l'API car elle se met en "sommeil" après une longue inactivité.
+- /!\ Lors de la première utilisation depuis un certain temps,
+- il se peut qu'il faille patienter quelques secondes avant d'avoir une réponse de l'API
+- car elle se met en "sommeil" après une longue inactivité. /!\
 ```
 
 Adresse de l'API: [https://tp05-tdr.herokuapp.com/](https://tp05-tdr.herokuapp.com/)
