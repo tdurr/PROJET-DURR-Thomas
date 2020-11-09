@@ -30,11 +30,11 @@ https://tp05-tdr.herokuapp.com/user/login
 
 Pour les tester, il est possible d'utiliser `postman` et d'y envoyer des requêtes `POST`:
 ```
-Sur https://tp05-tdr.herokuapp.com/user/login: 
+Sur https://tp05-tdr.herokuapp.com/user/login :
 Ex: un body x-www-form-urlencoded login:tdr password:P@$$w0rd renvoie un succès + token JWT
 
-Sur https://tp05-tdr.herokuapp.com/user/register 
+Sur https://tp05-tdr.herokuapp.com/user/register :
 Ex: un body x-www-form-urlencoded contenant un Client renvoie ce même Client.
 ```
 
-Le git de l'API sur lesquels sont basés les déploiements est un git privé identique au contenu du dossier `back-end`.
+Le git de l'API sur lesquels sont basés les déploiements est un git privé identique au contenu du dossier `back-end`. Contactez-moi si il y a un quelconque soucis avec celle-ci svp. Je la re-déploierai.
