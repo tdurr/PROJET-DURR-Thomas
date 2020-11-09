@@ -57,6 +57,11 @@ export class ClientLoginFormComponent implements OnInit {
         });
       }
     })
+    .catch(error => {
+      this.loginForm.setErrors({
+        accessDenied: true
+      });
+    });
   }
 
   onResetToken(): void {
