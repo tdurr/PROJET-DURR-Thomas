@@ -53,15 +53,6 @@ class UserController
                 ->withStatus(400);
         }
 
-        if ($login != $_ENV["LOGIN"] || $password != $_ENV["PASSWORD"]) {
-            $response->getBody()->write(json_encode([
-                "success" => false
-            ]));
-            return $response
-                ->withHeader("Content-Type", "application/json")
-                ->withStatus(401);
-        }
-
         $repository = $this->entityManager->getRepository("Client");
         $client = $repository->findOneBy(["login" => $login]);
 
@@ -149,7 +140,7 @@ class UserController
             return $response->withStatus(400);
         }
 
-        $newClient = new Client;
+        $newClient = new \Client;
 
         $newClient->setNom($nom);
         $newClient->setPrenom($prenom);
@@ -160,7 +151,7 @@ class UserController
         $newClient->setEmail($email);
         $newClient->setCivilite($civilite);
         $newClient->setLogin($login);
-        $newClient->setPw($pw);
+        $newClient->setPassword($pw);
         $this->entityManager->persist($newClient);
         $this->entityManager->flush();
 
