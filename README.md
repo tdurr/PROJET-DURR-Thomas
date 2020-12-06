@@ -4,6 +4,9 @@
 Il y a un premier dossier qui contient tout le front-end Angular et un second dossier qui contient le back-end avec l'API php.
 
 ## Utiliser le projet
+
+Reminder: `npm install` dans front-end/ et `composer install` dans back-end/
+
 **Site Angular:**
 ```
 ng serve --open

@@ -5,6 +5,7 @@ use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use App\Middlewares\CorsMiddleware;
+use Tuupola\Middleware\JwtAuthentication;
 
 return function (App $app) {
 
@@ -12,6 +13,24 @@ return function (App $app) {
         return $response;
     });
     $app->add(CorsMiddleware::class);
+
+    $options = [
+        "attribute" => "token",
+        "header" => "Authorization",
+        "secure" => false,
+        "algorithm" => ["HS256"],
+        "secret" => $_ENV["JWT_SECRET"],
+        "path" => ["/user"],
+        "ignore" => ["/user/login", "/user/register"],
+        "error" => function ($response, $arguments) {
+            $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
+            $response = $response->withStatus(401);
+            return $response->withHeader("Content-Type", "application/json")->getBody()->write(json_encode($data));
+        }
+    ];
+    
+    // Chargement du Middleware
+    $app->add(new JwtAuthentication($options));
 
 //$app->get('/', "App\Controllers\HomeController:home");
 
