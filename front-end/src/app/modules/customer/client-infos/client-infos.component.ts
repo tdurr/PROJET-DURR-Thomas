@@ -13,17 +13,12 @@ import { CustomerService } from './../services/customer.service';
 export class ClientInfosComponent implements OnInit {
 
   public clientObs : Observable<Client>;
-  private subscription : Subscription = null;
   private loginObs : Observable<string>;
   
   constructor(private customerService: CustomerService, private store: Store) { }
 
   ngOnInit(): void {
     this.loginObs = this.store.select(ClientState.getLogin);
-
-    if ( this.loginObs != null ) {
-      this.subscription.unsubscribe();
-    }
     
     this.loginObs.subscribe((login: string) => {
       this.clientObs= this.customerService.getClient(login);

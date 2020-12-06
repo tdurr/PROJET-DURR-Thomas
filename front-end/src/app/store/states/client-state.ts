@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
     name: 'client',
     defaults: {
         tokenJwt: '',
-        login: "",
+        login: '',
     }
 })
 
@@ -31,7 +31,7 @@ export class ClientState {
     }
 
     @Action(AddLogin)
-    addClient( { patchState }: StateContext<ClientStateModel>, { payload }: AddLogin ): void {
+    addLogin( { patchState }: StateContext<ClientStateModel>, { payload }: AddLogin ): void {
         patchState({ login: payload });
     }
 }

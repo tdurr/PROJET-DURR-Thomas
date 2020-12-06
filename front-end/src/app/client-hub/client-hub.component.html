@@ -2,6 +2,6 @@
     <p>
         <a class="btn btn-info" routerLink="/customer/login">Se connecter</a> 
         <a class="btn btn-info" routerLink="/customer/register">S'enregistrer</a>
-        <a *ngIf="this.userConnected == true" class="btn btn-danger" (click)="onDisconnect()">Se déconnecter</a>
+        <a *ngIf="this.userConnected == true" class="btn btn-danger" (click)="onDisconnect()">( {{ login | async }} ) Se déconnecter</a>
     </p>
 </div>

@@ -19,9 +19,10 @@ export class ClientHubComponent implements OnInit {
   ngOnInit(): void {
     this.login = this.store.select(ClientState.getLogin);
 
-    if (this.store.select(ClientState.getTokenJwt)) {
-      this.userConnected = false;
-    }
+    this.store.select(ClientState.getTokenJwt).subscribe(() =>
+      {
+        this.userConnected = true;
+      });
   }
 
   onDisconnect() {

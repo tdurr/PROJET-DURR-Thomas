@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-require_once __DIR__ . '/../../bootstrap.php';
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Doctrine\ORM\EntityManager;
@@ -30,11 +29,14 @@ class UserController
 
         if ($client == null) {
             $response->getBody()->write(json_encode(["success" => false]));
+            return $response
+            ->withHeader('Content-Type', 'application/json')
+            ->withStatus(401);
         }
 
         return $response
             ->withHeader('Content-Type', 'application/json')
-            ->withStatus(401);
+            ->withStatus(200);
 
     }
 
@@ -80,7 +82,9 @@ class UserController
 
     public function register(Request $request, Response $response): Response
     {
-        $data = $request->getParsedBody();
+        $body = $request->getParsedBody();
+        $json = $body['client'] ?? "";
+        $data = json_decode($json, true);
 
         $nom = $data['nom'] ?? "";
         $prenom = $data['prenom'] ?? "";
@@ -130,6 +134,16 @@ class UserController
 
         if (!preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,32}$/",$pw)) {
             return $response->withStatus(400);
+        }
+
+        $repository = $this->m_entityManager->getRepository("Client");
+        $duplicateLogin = $repository->findOneBy(["login" => $login]);
+
+        if ($duplicateLogin != null) {
+            $response->getBody()->write(json_encode(["success" => false]));
+            return $response
+                ->withHeader('Content-Type', 'application/json')
+                ->withStatus(400);
         }
 
         $newClient = new Client;

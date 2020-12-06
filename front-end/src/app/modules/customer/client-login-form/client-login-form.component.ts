@@ -28,7 +28,6 @@ export class ClientLoginFormComponent implements OnInit {
   }
 
   public tokenJwtObs: Observable<string>;
-  public userConnected: boolean;
   public isSubmitted: boolean;
   public hide : boolean = true;
 
@@ -40,18 +39,13 @@ export class ClientLoginFormComponent implements OnInit {
 
   onSubmit(): void {
 
-    if (this.userConnected) {
-      return;
-    }
-
     this.isSubmitted = true;
 
     this.customerService.login( this.loginForm.value.login, this.loginForm.value.password ).then(response => {
 
       if (response.body.success) {
         this.store.dispatch(new AddJWT(response.headers.get('Authorization')));
-        this.store.dispatch(new AddLogin(response.body.login));
-        this.userConnected = true;
+        this.store.dispatch(new AddLogin(response.body.user.login));
       } 
       else {
         this.loginForm.setErrors({
@@ -64,11 +58,6 @@ export class ClientLoginFormComponent implements OnInit {
         accessDenied: true
       });
     });
-  }
-
-  onResetToken(): void {
-    this.store.dispatch(new AddJWT(''));
-    this.userConnected = false;
   }
 
   showPassword(): void {
