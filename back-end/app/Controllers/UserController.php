@@ -5,7 +5,7 @@ namespace App\Controllers;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Doctrine\ORM\EntityManager;
-
+use App\Controllers\TokenController;
 use Firebase\JWT\JWT;
 
 class UserController
@@ -63,15 +63,7 @@ class UserController
                 ->withStatus(401);
         }
 
-        $issuedAt = time();
-
-        $payload = [
-            "userID" => 1,
-            "iat" => $issuedAt,
-            "exp" => $issuedAt + 60
-        ];
-
-        $token_jwt = JWT::encode($payload, $_ENV["JWT_SECRET"], "HS256");
+        $response = TokenController::makeJWT($response);
 
         $response->getBody()->write(json_encode([
             "success" => true,
@@ -81,7 +73,6 @@ class UserController
         ]));
         return $response
             ->withHeader("Content-Type", "application/json")
-            ->withHeader("Authorization", "Bearer {$token_jwt}")
             ->withStatus(200);
             
     }
