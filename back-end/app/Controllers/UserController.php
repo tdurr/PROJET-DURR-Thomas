@@ -6,7 +6,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Doctrine\ORM\EntityManager;
 use App\Controllers\TokenController;
-use Firebase\JWT\JWT;
+use Client;
 
 class UserController
 {
@@ -131,7 +131,7 @@ class UserController
             return $response->withStatus(400);
         }
 
-        $newClient = new \Client;
+        $newClient = new Client;
 
         $newClient->setNom($nom);
         $newClient->setPrenom($prenom);
