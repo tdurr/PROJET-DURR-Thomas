@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+require_once __DIR__ . '/../../bootstrap.php';
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Doctrine\ORM\EntityManager;
@@ -15,7 +16,7 @@ class UserController
         $this->entityManager = $entityManager;
     }
 
-    public function getClient(Request $request, Response $response, array $args): Response
+    public function getClient(Response $response, array $args): Response
     {
         $login = $args["login"] ?? "";
 
@@ -37,7 +38,7 @@ class UserController
 
     }
 
-    public function login(Request $request, Response $response, array $args): Response
+    public function login(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
 
@@ -77,7 +78,7 @@ class UserController
             
     }
 
-    public function register(Request $request, Response $response, array $args): Response
+    public function register(Request $request, Response $response): Response
     {
         $data = $request->getParsedBody();
 
