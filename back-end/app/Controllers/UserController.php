@@ -11,9 +11,9 @@ use Client;
 
 class UserController
 {
-    private EntityManager $entityManager;
+    private EntityManager $m_entityManager;
     public function __construct(EntityManager $entityManager) {
-        $this->entityManager = $entityManager;
+        $this->m_entityManager = $entityManager;
     }
 
     public function getClient(Response $response, array $args): Response
@@ -25,7 +25,7 @@ class UserController
                 ->withStatus(400);
         }
 
-        $repository = $this->entityManager->getRepository("Client");
+        $repository = $this->m_entityManager->getRepository("Client");
         $client = $repository->findOneBy(["login" => $login]);
 
         if ($client == null) {
@@ -54,7 +54,7 @@ class UserController
                 ->withStatus(400);
         }
 
-        $repository = $this->entityManager->getRepository("Client");
+        $repository = $this->m_entityManager->getRepository("Client");
         $client = $repository->findOneBy(["login" => $login]);
 
         if ($client == null || $client->getPassword() != $password) {
@@ -144,8 +144,8 @@ class UserController
         $newClient->setCivilite($civilite);
         $newClient->setLogin($login);
         $newClient->setPassword($pw);
-        $this->entityManager->persist($newClient);
-        $this->entityManager->flush();
+        $this->m_entityManager->persist($newClient);
+        $this->m_entityManager->flush();
 
         $response->getBody()->write(json_encode(["success" => true]));
         return $response
