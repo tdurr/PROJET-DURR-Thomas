@@ -66,7 +66,7 @@ class UserController
         $issuedAt = time();
 
         $payload = [
-            "userLogin" => $login,
+            "userID" => 1,
             "iat" => $issuedAt,
             "exp" => $issuedAt + 60
         ];

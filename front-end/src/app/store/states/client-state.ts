@@ -1,7 +1,6 @@
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ClientStateModel } from './client-state-model';
-import { AddJWT, AddClient } from '../actions/client-action';
-import { Client } from '../../models/Client';
+import { AddJWT, AddLogin } from '../actions/client-action';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -11,7 +10,7 @@ import { Injectable } from '@angular/core';
     name: 'client',
     defaults: {
         tokenJwt: '',
-        client: null,
+        login: "",
     }
 })
 
@@ -22,8 +21,8 @@ export class ClientState {
     }
 
     @Selector()
-    static getClient(state: ClientStateModel): Client {
-        return state.client;
+    static getLogin(state: ClientStateModel): string {
+        return state.login;
     }
 
     @Action(AddJWT)
@@ -31,8 +30,8 @@ export class ClientState {
         patchState({ tokenJwt: payload });
     }
 
-    @Action(AddClient)
-    addClient( { patchState }: StateContext<ClientStateModel>, { payload }: AddClient ): void {
-        patchState({ client: payload });
+    @Action(AddLogin)
+    addClient( { patchState }: StateContext<ClientStateModel>, { payload }: AddLogin ): void {
+        patchState({ login: payload });
     }
 }

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from '../../../models/Client';
 import { Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ClientState } from './../../../store/states/client-state';
+import { CustomerService } from './../services/customer.service';
 
 @Component({
   selector: 'app-client-infos',
@@ -12,10 +13,20 @@ import { ClientState } from './../../../store/states/client-state';
 export class ClientInfosComponent implements OnInit {
 
   public clientObs : Observable<Client>;
+  private subscription : Subscription = null;
+  private loginObs : Observable<string>;
   
-  constructor(private store: Store) { }
+  constructor(private customerService: CustomerService, private store: Store) { }
 
   ngOnInit(): void {
-    this.clientObs = this.store.select(ClientState.getClient);
+    this.loginObs = this.store.select(ClientState.getLogin);
+
+    if ( this.loginObs != null ) {
+      this.subscription.unsubscribe();
+    }
+    
+    this.loginObs.subscribe((login: string) => {
+      this.clientObs= this.customerService.getClient(login);
+    });
   }
 }

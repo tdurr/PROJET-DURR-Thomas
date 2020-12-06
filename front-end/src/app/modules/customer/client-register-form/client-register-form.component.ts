@@ -1,19 +1,23 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Client } from '../../../models/Client';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomerService } from '../services/customer.service';
 import { Store } from '@ngxs/store';
-import { AddClient } from '../../../store/actions/client-action';
+import { Observable, Subscription } from 'rxjs';
+import { AddLogin } from '../../../store/actions/client-action';
 
 @Component({
   selector: 'app-client-register-form',
   templateUrl: './client-register-form.component.html',
   styleUrls: ['./client-register-form.component.css']
 })
-export class ClientRegisterFormComponent implements OnInit {
+export class ClientRegisterFormComponent implements OnDestroy {
   
   //@Output() newCustomerEvent: EventEmitter<Client> = new EventEmitter<Client>();
+
+  public responseObs: Observable<{success: boolean, login: string}>;
+  private subscription: Subscription = null;
 
   customerForm = new FormGroup ({
     nom : new FormControl('', [Validators.required, nomValidator]),
@@ -79,6 +83,12 @@ export class ClientRegisterFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    if (this.subscription != null) {
+      this.subscription.unsubscribe();
+    }
+  }
+
   onSubmit(): void{
 
     if (!this.customerForm.valid) {
@@ -98,13 +108,14 @@ export class ClientRegisterFormComponent implements OnInit {
       this.customerForm.value.pw
      )
     
+     this.responseObs = this.customerService.register(newClient);
 
-    this.customerService.register(newClient).then((client) => {
-      this.store.dispatch(new AddClient(client));
-      this.router.navigate(['customer/infos']);
-    }).catch(error => {
-      console.error("Erreur de création du compte");
-    })
+     this.subscription = this.responseObs.subscribe(body => {
+      if (body.success) {
+        this.store.dispatch(new AddLogin(body.login));
+        this.router.navigate(['/customer/infos']);
+      }
+    });
   }
   
 /*
