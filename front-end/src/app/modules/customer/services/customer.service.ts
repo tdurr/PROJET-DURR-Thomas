@@ -12,7 +12,7 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   getClient(login: string): Observable<Client> {
-    return this.http.get<Client>(environment.apiUrl + 'customers/' + login);
+    return this.http.get<Client>(environment.apiUrl + 'user/' + login);
   }
 
   login(login: string, password: string): Observable<{success: boolean}> {
