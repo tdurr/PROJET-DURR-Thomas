@@ -15,18 +15,19 @@ export class CustomerService {
     return this.http.get<Client>(environment.apiUrl + 'user/' + login);
   }
 
-  login(login: string, password: string): Observable<{success: boolean}> {
+  login(login: string, password: string): Promise<any> {
     let body = new URLSearchParams();
     body.set('login', login);
     body.set('password', password);
 
-    return this.http.post<{success: boolean}>(
+    return this.http.post<any>(
       environment.apiUrl + 'user/login',
       body.toString(),
       {
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
+        observe: 'response'
       }
-    );
+    ).toPromise();
   }
 
   register(client: Client): Observable<{success: boolean, login: string}> {

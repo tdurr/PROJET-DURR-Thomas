@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CustomerService } from './../../customer/services/customer.service';
 import { ClientState } from './../../../store/states/client-state';
 import { AddJWT } from './../../../store/actions/client-action';
+import { AddLogin } from './../../../store/actions/client-action';
 
 @Component({
   selector: 'app-client-login-form',
@@ -49,6 +50,7 @@ export class ClientLoginFormComponent implements OnInit {
 
       if (response.body.success) {
         this.store.dispatch(new AddJWT(response.headers.get('Authorization')));
+        this.store.dispatch(new AddLogin(response.body.login));
         this.userConnected = true;
       } 
       else {
