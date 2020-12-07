@@ -143,7 +143,7 @@ class UserController
             $response->getBody()->write(json_encode(["success" => false]));
             return $response
                 ->withHeader('Content-Type', 'application/json')
-                ->withStatus(400);
+                ->withStatus(200);
         }
 
         $newClient = new Client;

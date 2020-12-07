@@ -115,6 +115,12 @@ export class ClientRegisterFormComponent implements OnDestroy {
         this.store.dispatch(new AddLogin(body.login));
         this.router.navigate(['/customer/infos']);
       }
+
+      if (!body.success) {
+        this.customerForm.setErrors({
+          duplicateLogin: true
+        });
+      }
     });
   }
   

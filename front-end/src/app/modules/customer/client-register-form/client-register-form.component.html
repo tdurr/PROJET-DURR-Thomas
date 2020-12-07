@@ -85,6 +85,10 @@
             <p *ngIf="cpw.errors.different">La confirmation est différente du mot de passe.</p>
         </div>
         
+        <div *ngIf="customerForm.invalid" class="error"> 
+            <p *ngIf="customerForm.errors && customerForm.errors.duplicateLogin">Login déjà existant en base, en choisir un autre</p>
+        </div> 
+
         <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block" [disabled]="!customerForm.valid">Confirmer</button>
         <button type="button" id="btn-autofill" class="btn btn-warning btn-lg btn-block" (click)="fillInputs()">Saisie automatique</button>
     </fieldset>

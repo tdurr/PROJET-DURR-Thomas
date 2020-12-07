@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from '../../../models/Client';
 import { Store } from '@ngxs/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 import { ClientState } from './../../../store/states/client-state';
 import { CustomerService } from './../services/customer.service';
 
@@ -20,8 +21,16 @@ export class ClientInfosComponent implements OnInit {
   ngOnInit(): void {
     this.loginObs = this.store.select(ClientState.getLogin);
     
-    this.loginObs.subscribe((login: string) => {
-      this.clientObs= this.customerService.getClient(login);
-    });
+    this.loginObs.pipe(
+      mergeMap((login : string): Observable<Client> => {
+        if ( login !== '') {
+          return this.customerService.getClient(login);
+        }
+        else {
+          return of(null);
+        }
+      }
+      )
+    )
   }
 }
