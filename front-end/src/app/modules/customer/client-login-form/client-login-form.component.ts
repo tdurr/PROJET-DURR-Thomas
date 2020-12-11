@@ -46,10 +46,6 @@ export class ClientLoginFormComponent implements OnInit {
       if (response.body.success) {
         this.store.dispatch(new AddJWT(response.headers.get('Authorization')));
         this.store.dispatch(new AddLogin(response.body.user.login));
-        /*
-        this.store.select(ClientState.getLogin).subscribe(log => {
-          console.log(log);
-        }) */
       } 
       else {
         this.loginForm.setErrors({
