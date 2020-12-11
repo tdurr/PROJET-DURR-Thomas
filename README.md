@@ -13,6 +13,7 @@ ng serve --open
 ```
 
 **API (Optionnel car déployée en ligne (voir plus bas)):**
+Ne pas oublier de se mettre en localhost dans le dossier environnement dans le front-end/src/ si on souhaite appeler le serv local.
 ```
 php -S localhost:8080 -t public
 ```
@@ -22,7 +23,7 @@ Table Client
 ```sql
 CREATE TABLE Client 
 (
-    id int PRIMARY KEY NOT NULL, 
+    id SERIAL PRIMARY KEY, 
     nom text, 
     prenom text, 
     adresse text, 
