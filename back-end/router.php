@@ -32,8 +32,6 @@ return function (App $app) {
     // Chargement du Middleware
     $app->add(new JwtAuthentication($options));
 
-//$app->get('/', "App\Controllers\HomeController:home");
-
     $app->group('/user', function (Group $group) {
         $group->post('/login', "App\Controllers\UserController:login");
         $group->post('/register', "App\Controllers\UserController:register");

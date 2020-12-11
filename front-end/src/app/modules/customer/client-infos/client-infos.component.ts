@@ -14,23 +14,23 @@ import { CustomerService } from './../services/customer.service';
 export class ClientInfosComponent implements OnInit {
 
   public clientObs : Observable<Client>;
-  private loginObs : Observable<string>;
   
   constructor(private customerService: CustomerService, private store: Store) { }
 
   ngOnInit(): void {
-    this.loginObs = this.store.select(ClientState.getLogin);
-    
-    this.loginObs.pipe(
-      mergeMap((login : string): Observable<Client> => {
-        if ( login !== '') {
-          return this.customerService.getClient(login);
-        }
-        else {
-          return of(null);
-        }
-      }
-      )
-    )
+
+    this.clientObs = this.store.select(ClientState.getLogin)
+      .pipe(
+        mergeMap(
+          (login: string): Observable<Client> => {
+            if (login !== '') {
+              return this.customerService.getClient(login);
+            }
+            else {
+              return of(null);
+            }
+          }
+        )
+      );
   }
 }

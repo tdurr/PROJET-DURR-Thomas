@@ -11,24 +11,17 @@ import { AddJWT, AddLogin } from './../../app/store/actions/client-action';
 })
 export class ClientHubComponent implements OnInit {
 
-  public login: Observable<string>;
-  public userConnected: boolean = true;
+  public loginObs: Observable<string>;
 
   constructor(private store : Store) { }
 
   ngOnInit(): void {
-    this.login = this.store.select(ClientState.getLogin);
-
-    this.store.select(ClientState.getTokenJwt).subscribe(() =>
-      {
-        this.userConnected = true;
-      });
+    this.loginObs = this.store.select(ClientState.getLogin);
   }
 
   onDisconnect() {
     this.store.dispatch(new AddJWT(''));
     this.store.dispatch(new AddLogin(''));
-    this.userConnected = false;
   }
 
 }

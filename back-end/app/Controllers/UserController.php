@@ -15,7 +15,7 @@ class UserController
         $this->m_entityManager = $entityManager;
     }
 
-    public function getClient(Response $response, array $args): Response
+    public function getClient(Request $request, Response $response, array $args): Response
     {
         $login = $args["login"] ?? "";
 
@@ -34,6 +34,21 @@ class UserController
             ->withStatus(401);
         }
 
+        $body = array(
+            "nom" => $client->getNom(),
+            "prenom" => $client->getPrenom(),
+            "adresse" => $client->getAdresse(),
+            "cp" => $client->getCp(),
+            "ville" => $client->getVille(),
+            "tel" => $client->getTel(),
+            "email" => $client->getEmail(),
+            "civilite" => $client->getCivilite(),
+            "login" => $client->getLogin(),
+            "pw" => $client->getPassword()
+        );
+
+        $response->getBody()->write(json_encode($body));
+        
         return $response
             ->withHeader('Content-Type', 'application/json')
             ->withStatus(200);

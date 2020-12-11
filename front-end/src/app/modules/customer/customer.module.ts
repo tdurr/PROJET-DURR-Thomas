@@ -9,7 +9,8 @@ import { TelephonePipe } from './pipes/telephone.pipe';
 import { PasswordMatchDirective } from './directives/password-match.directive';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerService } from './../customer/services/customer.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiHttpInterceptor } from './api-http-interceptor';
 
 
 
@@ -29,6 +30,10 @@ import { HttpClientModule } from '@angular/common/http';
     CustomerRoutingModule,
     HttpClientModule
   ],
-  providers: [CustomerService]
+  providers: [
+    CustomerService,
+    { provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true 
+    }
+  ]
 })
 export class CustomerModule { }
