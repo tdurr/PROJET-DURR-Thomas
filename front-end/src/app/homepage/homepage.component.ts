@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { CartState } from '../store/states/cart-state';
+import { ClientState } from '../store/states/client-state';
 
 @Component({
   selector: 'app-homepage',
@@ -11,11 +12,13 @@ import { CartState } from '../store/states/cart-state';
 export class HomepageComponent implements OnInit {
 
   public sizeOfCart : Observable<number>;
+  public loginObs : Observable<string>;
 
   constructor(private store : Store) { }
 
   ngOnInit(): void {
     this.sizeOfCart = this.store.select(CartState.getNbOfItems);
+    this.loginObs = this.store.select(ClientState.getLogin);
   }
 
 }

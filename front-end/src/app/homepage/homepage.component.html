@@ -2,7 +2,7 @@
     <nav>
         <div class="nav nav-tabs nav-fill">
             <a class="nav-item nav-link menu-link" routerLink="/product/list" routerLinkActive="active current">PRODUITS</a>
-            <a class="nav-item nav-link menu-link" routerLink="/customer/infos" routerLinkActive="active current">MON COMPTE</a>
+            <a *ngIf="(loginObs | async )" class="nav-item nav-link menu-link" routerLink="/customer/infos" routerLinkActive="active current">MON COMPTE</a>
             <a class="nav-item nav-link menu-link" routerLink="/product/cart" routerLinkActive="active current">MON PANIER ({{ sizeOfCart | async }} articles)</a>
         </div>
     </nav>

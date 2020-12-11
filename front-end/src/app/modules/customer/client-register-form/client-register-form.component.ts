@@ -6,6 +6,7 @@ import { CustomerService } from '../services/customer.service';
 import { Store } from '@ngxs/store';
 import { Observable, Subscription } from 'rxjs';
 import { AddLogin } from '../../../store/actions/client-action';
+import { AddJWT } from '../../../store/actions/client-action';
 
 @Component({
   selector: 'app-client-register-form',
@@ -110,13 +111,19 @@ export class ClientRegisterFormComponent implements OnDestroy {
     
      this.responseObs = this.customerService.register(newClient);
 
-     this.subscription = this.responseObs.subscribe(body => {
-      if (body.success) {
-        this.store.dispatch(new AddLogin(body.login));
-        this.router.navigate(['/customer/infos']);
+     this.subscription = this.responseObs.subscribe(res => {
+
+      if (res.success) {
+        this.customerService.login( this.customerForm.value.login, this.customerForm.value.pw ).then(response => {
+          if (response.body.success) {
+            this.store.dispatch(new AddJWT(response.headers.get('Authorization')));
+            this.store.dispatch(new AddLogin(response.body.user.login));
+            this.router.navigate(['/customer/infos']);
+          }
+        })
       }
 
-      if (!body.success) {
+      if (!res.success) {
         this.customerForm.setErrors({
           duplicateLogin: true
         });
