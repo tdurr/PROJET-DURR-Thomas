@@ -12,13 +12,19 @@ Reminder: `npm install` dans front-end/ et `composer install` dans back-end/
 ng serve --open
 ```
 
-**API (Optionnel car déployée en ligne (voir plus bas)):**
-Ne pas oublier de se mettre en localhost dans le dossier environnement dans le front-end/src/ si on souhaite appeler le serv local.
+**API:**
+
+L'API est déployée sur Heroku comme expliqué plus bas. Cependant pour utiliser l'API en local:
+
+1) Ne pas oublier de se mettre en localhost dans le dossier `environnement` du front-end angular
+
+2)
 ```
 php -S localhost:8080 -t public
 ```
 
-**Base de données PostgreSQL déployée sur Heroku**
+## Base de données PostgreSQL (aussi déployée sur Heroku)
+
 Table Client
 ```sql
 CREATE TABLE Client 
@@ -54,10 +60,11 @@ CREATE TABLE Produit
 ```
 
 **Disponible sur stackblitz:**
-[https://stackblitz.com/github/tdurr/tp06_durr_thomas/tree/master/front-end](https://stackblitz.com/github/tdurr/tp06_durr_thomas/tree/master/front-end)
+[https://stackblitz.com/github/tdurr/projet/tree/master/front-end](https://stackblitz.com/github/tdurr/projet/tree/master/front-end)
 
-## Déploiment et utilisation de l'API
-L'API est aussi déployée sur `Heroku` pour que l'utilisation soit plus pratique pour tout le monde. Du coup seule l'app Angular est à lancer avec un `ng serve --open`. Les en-têtes HTTP sont totalement gérées côté serveur plutôt que d'utiliser un proxy sur le front-end Angular ce qui est la bonne pratique.
+
+## Heroku
+L'API est déployée sur `Heroku` pour que l'utilisation soit plus pratique pour tout le monde. Du coup seule l'app Angular est à lancer avec un `ng serve --open`.
 
 ```diff
 - /!\ Lors de la première utilisation depuis un certain temps,
@@ -67,23 +74,13 @@ L'API est aussi déployée sur `Heroku` pour que l'utilisation soit plus pratiqu
 
 Adresse de l'API: [https://tp05-tdr.herokuapp.com/](https://tp05-tdr.herokuapp.com/)
 
-Les trois endpoints sont:
+Les endpoints sont:
 ```bash
 https://tp05-tdr.herokuapp.com/user/register
 https://tp05-tdr.herokuapp.com/user/login
-https://tp05-tdr.herokuapp.com/customers/{login}
-```
-
-Pour les tester, il est possible d'utiliser `postman` et d'y envoyer des requêtes `POST`:
-```
-POST Sur https://tp05-tdr.herokuapp.com/user/login :
-Ex: un body x-www-form-urlencoded login:tdr password:P@$$w0rd renvoie un succès + token JWT
-
-POST Sur https://tp05-tdr.herokuapp.com/user/register :
-Ex: un body x-www-form-urlencoded login password renvoie un token JWT et le login.
-
-GET Sur https://tp05-tdr.herokuapp.com/customers/{login}:
-Ex: permet de retrouver les informations client à partir d'un login.
+https://tp05-tdr.herokuapp.com/user/{login}
+https://tp05-tdr.herokuapp.com/product/all
+https://tp05-tdr.herokuapp.com/product/{id}
 ```
 
 Le git de l'API sur lesquels sont basés les déploiements est un git privé identique au contenu du dossier `back-end`. Contactez-moi si il y a un quelconque soucis avec celle-ci svp. Je la re-déploierai.
