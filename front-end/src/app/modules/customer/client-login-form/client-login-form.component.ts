@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
 import { CustomerService } from './../../customer/services/customer.service';
-import { ClientState } from './../../../store/states/client-state';
 import { AddJWT } from './../../../store/actions/client-action';
 import { AddLogin } from './../../../store/actions/client-action';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-client-login-form',
@@ -27,14 +26,12 @@ export class ClientLoginFormComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  public tokenJwtObs: Observable<string>;
   public isSubmitted: boolean;
   public hide : boolean = true;
 
-  constructor(private customerService: CustomerService, private store: Store) { }
+  constructor(private location: Location, private customerService: CustomerService, private store: Store) { }
 
   ngOnInit(): void {
-    this.tokenJwtObs = this.store.select(ClientState.getTokenJwt);
   }
 
   onSubmit(): void {
@@ -46,6 +43,7 @@ export class ClientLoginFormComponent implements OnInit {
       if (response.body.success) {
         this.store.dispatch(new AddJWT(response.headers.get('Authorization')));
         this.store.dispatch(new AddLogin(response.body.user.login));
+        this.location.back();
       } 
       else {
         this.loginForm.setErrors({
