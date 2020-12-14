@@ -21,7 +21,7 @@
                 <p *ngIf="password.errors.required">Veuillez renseigner votre mot de passe.</p>
             </div> 
 
-            <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block" [disabled]="!loginForm.valid">Se connecter</button>
+            <button type="submit" id="btn-submit" class="btn btn-primary btn-lg btn-block">Se connecter</button>
 
             <div *ngIf="loginForm.invalid && isSubmitted" class="error"> 
                 <p *ngIf="loginForm.errors && loginForm.errors.accessDenied">Informations invalides</p>
