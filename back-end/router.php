@@ -38,7 +38,7 @@ return function (App $app) {
         $group->get('/{login}', "App\Controllers\UserController:getClient");
     });
 
-    $app->group('/produit', function (Group $group) {
+    $app->group('/product', function (Group $group) {
         $group->get('/all', "App\Controllers\ProductController:getProducts");
         $group->get('/{id}', "App\Controllers\ProductController:getProductById");
     });
