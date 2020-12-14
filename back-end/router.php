@@ -25,7 +25,9 @@ return function (App $app) {
         "error" => function ($response, $arguments) {
             $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
             $response = $response->withStatus(401);
-            return $response->withHeader("Content-Type", "application/json")->getBody()->write(json_encode($data));
+            return $response
+                ->withHeader("Content-Type", "application/json")
+                ->getBody()->write(json_encode($data));
         }
     ];
     
