@@ -38,6 +38,21 @@ CREATE TABLE Client
 );
 ```
 
+Table Produit
+```sql
+CREATE TABLE Produit 
+(
+    id SERIAL PRIMARY KEY, 
+    name text, 
+    price NUMERIC(2), 
+    brand text, 
+    category text, 
+    hp int, 
+    torque int, 
+    image text
+);
+```
+
 **Disponible sur stackblitz:**
 [https://stackblitz.com/github/tdurr/tp06_durr_thomas/tree/master/front-end](https://stackblitz.com/github/tdurr/tp06_durr_thomas/tree/master/front-end)
 

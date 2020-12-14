@@ -1,0 +1,53 @@
+Produit:
+    type: entity
+    table: produit
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        name:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        price:
+            type: decimal
+            nullable: true
+            precision: 2
+            scale: 0
+        brand:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        category:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        hp:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        torque:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        image:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }
