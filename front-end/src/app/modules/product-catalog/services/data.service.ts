@@ -11,11 +11,15 @@ export class DataService {
 
   constructor(private http : HttpClient) { }
 
-  /*getData() : Observable<Product[]> { 
-    return this.http.get("http://localhost:4200/assets/product-set.json")
-    .subscribe(data => console.log(data));
-  } */
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(environment.apiUrl + 'product/all');
+  }
 
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(environment.apiUrl + 'product/' + id);
+  }
+
+  /* Bouchon
   public getData() : Observable<Product[]> {
     return this.http.get<Product[]>(environment.url)
   }
@@ -24,5 +28,5 @@ export class DataService {
     return this.getData().pipe(map( items => {
       return items.find( i => i.id.toString() == id );
     }));
-  }
+  } */
 }

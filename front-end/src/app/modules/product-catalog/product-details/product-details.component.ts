@@ -18,11 +18,7 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private dataService : DataService, private store : Store) { }
 
   ngOnInit(): void {
-
-    this.route.paramMap.subscribe(params => {
-      let idFromUrl : string = params.get('id');
-      this.productObs = this.dataService.getDataById(idFromUrl);
-    });
+      this.productObs = this.dataService.getProductById(this.route.snapshot.params.id);
   }
 
   public AddToCart(product : Product) : void {

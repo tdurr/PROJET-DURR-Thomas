@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
   constructor(private dataService : DataService, private store: Store) { }
 
   ngOnInit(): void {
-    this.products = this.dataService.getData();
+    this.products = this.dataService.getProducts();
     //this.shownProducts = this.products;
   }
 
