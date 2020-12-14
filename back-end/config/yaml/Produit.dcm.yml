@@ -20,8 +20,8 @@ Produit:
         price:
             type: decimal
             nullable: true
-            precision: 2
-            scale: 0
+            precision: 10
+            scale: 2
         brand:
             type: text
             nullable: true
