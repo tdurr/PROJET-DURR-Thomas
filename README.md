@@ -1,4 +1,4 @@
-# TP06 Thomas DURR
+# Projet SI-WEB Thomas DURR
 
 ## Repository
 Il y a un premier dossier qui contient tout le front-end Angular et un second dossier qui contient le back-end avec l'API php.
