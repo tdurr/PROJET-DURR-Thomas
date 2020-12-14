@@ -44,7 +44,7 @@ CREATE TABLE Produit
 (
     id SERIAL PRIMARY KEY, 
     name text, 
-    price NUMERIC(2), 
+    price NUMERIC(10,2), 
     brand text, 
     category text, 
     hp int, 
