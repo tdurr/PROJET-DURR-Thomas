@@ -23,7 +23,7 @@ L'API est déployée sur Heroku comme expliqué plus bas. Cependant pour utilise
 php -S localhost:8080 -t public
 ```
 
-## Base de données PostgreSQL (aussi déployée sur Heroku)
+**Base de données PostgreSQL (aussi déployée sur Heroku)**
 
 Table Client
 ```sql
@@ -60,6 +60,7 @@ CREATE TABLE Produit
 ```
 
 **Disponible sur stackblitz:**
+
 [https://stackblitz.com/github/tdurr/projet/tree/master/front-end](https://stackblitz.com/github/tdurr/projet/tree/master/front-end)
 
 
