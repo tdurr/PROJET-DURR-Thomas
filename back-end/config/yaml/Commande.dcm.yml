@@ -1,0 +1,28 @@
+Commande:
+    type: entity
+    table: commande
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        amount:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+        date:
+            type: datetime
+            nullable: true
+        loginclient:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

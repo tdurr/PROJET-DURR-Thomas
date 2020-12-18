@@ -1,0 +1,40 @@
+Lignedecommande:
+    type: entity
+    table: lignedecommande
+    indexes:
+        IDX_A4C3DF166FA75095:
+            columns:
+                - orderid
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        productname:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        quantity:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    manyToOne:
+        orderid:
+            targetEntity: Commande
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                orderid:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -59,6 +59,29 @@ CREATE TABLE Produit
 );
 ```
 
+Table Commande
+```sql
+CREATE TABLE Commande
+(
+    id SERIAL PRIMARY KEY, 
+    amount NUMERIC(10,2), 
+    date timestamp, 
+    loginClient text,
+);
+```
+
+Table LigneDeCommande
+```sql
+CREATE TABLE LigneDeCommande
+(
+    id SERIAL PRIMARY KEY,
+    orderId int,
+    productName text,
+    quantity int,
+    CONSTRAINT FK_Commande FOREIGN KEY(orderId) REFERENCES Commande(id)
+);
+```
+
 **Disponible sur stackblitz:**
 
 [https://stackblitz.com/github/tdurr/projet/tree/master/front-end](https://stackblitz.com/github/tdurr/projet/tree/master/front-end)
