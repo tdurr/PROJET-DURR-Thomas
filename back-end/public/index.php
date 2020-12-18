@@ -13,7 +13,9 @@ $dotenv->load();
 $containerBuilder = new DI\ContainerBuilder();
 $containerBuilder->useAutowiring(true);
 $container = $containerBuilder->build();
-$container->set(EntityManager::class, function($container) use($entityManager) { return $entityManager; });
+$container->set(EntityManager::class, function($container) use($entityManager) { 
+    return $entityManager; 
+});
 
 AppFactory::setContainer($container);
 $app = AppFactory::create();
