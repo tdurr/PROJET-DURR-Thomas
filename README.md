@@ -78,6 +78,7 @@ CREATE TABLE LigneDeCommande
     orderId int,
     productName text,
     quantity int,
+    lineAmount NUMERIC(10,2),
     CONSTRAINT FK_Commande FOREIGN KEY(orderId) REFERENCES Commande(id)
 );
 ```
