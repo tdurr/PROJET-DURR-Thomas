@@ -1,0 +1,14 @@
+<div id="container-orders">
+    <table>
+        <tr>
+            <th>N°</th>
+            <th>Date</th>
+            <th>Montant</th>
+        </tr>
+        <tr *ngIf="(orderObs | async) as order">
+            <td>{{ order.num }}</td>
+            <td>{{ order.date }}</td>
+            <td>{{ order.amount }}</td>
+        </tr>
+    </table>
+</div>

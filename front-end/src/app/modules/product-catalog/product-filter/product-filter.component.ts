@@ -22,26 +22,6 @@ export class ProductFilterComponent implements OnInit {
   }
 
   ngOnInit() : void {
-
-    /*this.filterForm.valueChanges.subscribe(filterValues => {
-      let filteredProducts : Observable<Product[]>;
-
-      this.products.pipe(map( items => items.filter(
-        
-        // categorie
-        i => i.category.includes(filterValues.categoryFilter) && 
-
-        // prix
-        (filterValues.priceFilter !== '' ? i.price <= filterValues.priceFilter : true) &&
-
-        // nom
-        i.name.includes(filterValues.nameFilter) ))).subscribe({
-          next : 
-          error: err => console.error(err),
-          complete: () => this.filterEvent.emit(filteredProducts)
-        });
-      }); */
-
       this.filterEvent.emit(this.filterForm.valueChanges);
   }
 }

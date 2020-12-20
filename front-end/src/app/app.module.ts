@@ -16,7 +16,7 @@ import { NgxsModule } from '@ngxs/store';
     HeaderComponent,
     FooterComponent,
     HomepageComponent,
-    ClientHubComponent
+    ClientHubComponent,
   ],
   imports: [
     BrowserModule,

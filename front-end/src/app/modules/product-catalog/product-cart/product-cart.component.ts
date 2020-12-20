@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { CartState } from '../../../store/states/cart-state';
+import { ClientState } from '../../../store/states/client-state';
 
 @Component({
   selector: 'app-product-cart',
@@ -16,6 +17,7 @@ export class ProductCartComponent implements OnInit {
   public items: Observable<CartItem[]>;
   public netWorth: Observable<number>;
   public nbOfItems: Observable<number>;
+  public loginObs: Observable<string>;
 
   constructor(private store: Store) { }
 
@@ -23,6 +25,7 @@ export class ProductCartComponent implements OnInit {
     this.items = this.store.select(state => state.cart.items);
     this.netWorth = this.store.select(CartState.getCartValue);
     this.nbOfItems = this.store.select(CartState.getNbOfItems);
+    this.loginObs = this.store.select(ClientState.getLogin);
   }
 
   public EmptyCart(): void {

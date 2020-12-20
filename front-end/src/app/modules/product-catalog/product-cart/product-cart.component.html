@@ -23,5 +23,6 @@
         <h4>Nombre d'articles : {{ nbOfItems | async }}</h4>
         <h4>Valeur du panier : {{ netWorth | async }} €</h4>
     </div>
+    <button *ngIf="loginObs | async" type="submit" id ="buy-btn" class="btn btn-success btn-lg btn-block" routerLink="/checkout/buy" routerLinkActive="active current">Passer commande</button>
     <button type="submit" id ="empty-btn" class="btn btn-danger btn-lg btn-block" (click)="EmptyCart()">Vider mon panier</button>
 </section>

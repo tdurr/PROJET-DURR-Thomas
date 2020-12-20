@@ -18,15 +18,4 @@ export class DataService {
   getProductById(id: number): Observable<Product> {
     return this.http.get<Product>(environment.apiUrl + 'product/' + id);
   }
-
-  /* Bouchon
-  public getData() : Observable<Product[]> {
-    return this.http.get<Product[]>(environment.url)
-  }
-
-  public getDataById(id : string) : Observable<Product> {
-    return this.getData().pipe(map( items => {
-      return items.find( i => i.id.toString() == id );
-    }));
-  } */
 }

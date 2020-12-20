@@ -3,6 +3,8 @@ import { environment } from './../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Client } from '../../../models/Client';
+import { Order } from '../../../models/Order';
+
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +43,9 @@ export class CustomerService {
         headers: { 'content-type': 'application/x-www-form-urlencoded' },
       }
     );
+  }
+
+  getOrders(login: string) : Observable<Order[]> {
+    return this.http.get<Order[]>(environment.apiUrl + 'order/' + login);
   }
 }

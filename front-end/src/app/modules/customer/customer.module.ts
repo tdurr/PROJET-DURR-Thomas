@@ -11,9 +11,7 @@ import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerService } from './../customer/services/customer.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiHttpInterceptor } from './api-http-interceptor';
-
-
-
+import { ClientOrdersComponent } from './../customer/client-orders/client-orders.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +19,8 @@ import { ApiHttpInterceptor } from './api-http-interceptor';
     ClientInfosComponent,
     TelephonePipe,
     PasswordMatchDirective,
-    ClientLoginFormComponent
+    ClientLoginFormComponent,
+    ClientOrdersComponent
   ],
   imports: [
     CommonModule,
