@@ -158,7 +158,7 @@ class UserController
             $response->getBody()->write(json_encode(["success" => false]));
             return $response
                 ->withHeader('Content-Type', 'application/json')
-                ->withStatus(200);
+                ->withStatus(204);
         }
 
         $newClient = new Client;
@@ -179,6 +179,6 @@ class UserController
         $response->getBody()->write(json_encode(["success" => true]));
         return $response
             ->withHeader("Content-Type", "application/json")
-            ->withStatus(200);
+            ->withStatus(201);
     } 
 }

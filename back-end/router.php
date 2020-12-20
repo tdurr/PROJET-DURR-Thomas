@@ -44,4 +44,9 @@ return function (App $app) {
         $group->get('/all', "App\Controllers\ProductController:getProducts");
         $group->get('/{id}', "App\Controllers\ProductController:getProductById");
     });
+
+    $app->group('/order', function (Group $group) {
+        $group->post('/buy', "App\Controllers\OrderController:buy");
+        $group->get('/{client}', "App\Controllers\OrderController:getClientOrders");
+    });
 };

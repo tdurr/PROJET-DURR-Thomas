@@ -23,6 +23,11 @@ class Lignedecommande
     private $quantity;
 
     /**
+     * @var string|null
+     */
+    private $lineamount;
+
+    /**
      * @var \Commande
      */
     private $orderid;
@@ -84,6 +89,30 @@ class Lignedecommande
     public function getQuantity()
     {
         return $this->quantity;
+    }
+
+    /**
+     * Set lineamount.
+     *
+     * @param string|null $lineamount
+     *
+     * @return Lignedecommande
+     */
+    public function setLineamount($lineamount = null)
+    {
+        $this->lineamount = $lineamount;
+
+        return $this;
+    }
+
+    /**
+     * Get lineamount.
+     *
+     * @return string|null
+     */
+    public function getLineamount()
+    {
+        return $this->lineamount;
     }
 
     /**

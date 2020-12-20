@@ -26,6 +26,11 @@ Lignedecommande:
             nullable: true
             options:
                 unsigned: false
+        lineamount:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
     manyToOne:
         orderid:
             targetEntity: Commande
