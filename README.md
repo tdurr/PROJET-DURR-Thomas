@@ -65,7 +65,7 @@ CREATE TABLE Commande
 (
     id SERIAL PRIMARY KEY, 
     amount NUMERIC(10,2), 
-    date timestamp, 
+    date text, 
     loginClient text,
 );
 ```
