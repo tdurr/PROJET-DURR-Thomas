@@ -19,8 +19,13 @@ class OrderController
     {
         $login = $args["login"] ?? "";
 
+        if (!preg_match("/[0-9a-zA-Z-_]{3,20}/",$login)) {
+            return $response
+                ->withStatus(400);
+        }
+
         $repository = $this->m_entityManager->getRepository("Commande");
-        $dbOrders = $repository->findBy(array('colClient' => '{loginClient}'));
+        $dbOrders = $repository->findBy(['loginclient' => $login], ['date' => 'DESC']);
 
         if ($dbOrders == null) {
             $response->getBody()->write(json_encode(["success" => false]));
@@ -30,29 +35,40 @@ class OrderController
         }
 
         $repo = $this->m_entityManager->getRepository("LigneDeCommande");
+
+        // $orders = les commandes du client
         $orders = [];
         
+        // pour chaques commandes passées par le client
         foreach ($dbOrders as $order) {
-            
-            $dbOrderLines = $repository->findBy(array('orderId' => $order->getId()));
+
+            // on cherche toutes les lignes de commande d'une commande en base de données
+            $dbOrderLines = $repo->findBy(['orderid' => $order->getId()]);
+
+            // on initialise une liste de lignes pour la commande
             $orderLines = [];
+
+            // pour chaque lignes de commande trouvée on récupère chaque colonne de la table LigneDeCommande
             foreach ($dbOrderLines as $line) {
-                $orderLines[] = [
-                    "id" => $line->getId(),
-                    "orderId" => $line->getOrderId(),
-                    "productName" => $line->getProductname(),
-                    "quantity" => $line->getQuantity(),
-                    "lineAmount" => $line->getLineamount()
-                ];
+                $oneLine = [];
+                $oneLine["productName"] = $line->getProductname();
+                $oneLine["quantity"] =  $line->getQuantity();
+                $oneLine["lineAmount"] =  $line->getLineamount();
+
+                // puis on ajoute la ligne de commande à la liste des lignes de commande pour une commande donnée
+                array_push($orderLines, $oneLine);
             }
 
-            $orders[] = [
-                "id" => $order->getId(),
-                "amount" => $order->getAmount(),
-                "date" => $order->getDate(),
-                "loginClient" => $order->getLoginclient(),
-                "lines" => $orderLines
-            ];
+            // une fois toutes les lignes de commande d'une commande récupérées, on construit la commande intégrale
+            $oneOrder = [];
+            $oneOrder["id"] = $order->getId();
+            $oneOrder["amount"] = $order->getAmount();
+            $oneOrder["date"] = $order->getDate();
+            $oneOrder["loginClient"] = $order->getLoginclient();
+            $oneOrder["lines"] = $orderLines;
+
+            // et enfin on ajoute la commande complete à la liste des commandes passées par le client
+            array_push($orders, $oneOrder);
         }
 
         $response->getBody()->write(json_encode($orders));
@@ -70,9 +86,8 @@ class OrderController
 
         $amount = $data['amount'] ?? "";
         $date = $data['date'] ?? "";
-        $login = $data['login'] ?? "";
-        $lines = $data['lines'] ?? "";
-
+        $login = $data['loginClient'] ?? "";
+        $lines = $data['lignes'] ?? "";
 
         if (!preg_match("/[0-9a-zA-Z-_]{3,20}/",$login)) {
             return $response->withStatus(400);
@@ -83,7 +98,7 @@ class OrderController
                 ->withStatus(400);
         }
 
-        if (!preg_match("/[0-9]{1,4}/[0-9]{1,2}/[0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}/",$date)) {
+        if (!preg_match("/^([0-9]{4})-([0-1][0-9])-([0-3][0-9])\s([0-1][0-9]|[2][0-3]):([0-5][0-9]):([0-5][0-9])$/",$date)) {
             return $response
                 ->withStatus(400);
         }
@@ -105,14 +120,12 @@ class OrderController
                 ->withStatus(204);
         }
 
-        $orderId = $orderCreated->getOrderid();   
-
         foreach ($lines as $line) {
             $newOrderLine = new LigneDeCommande;
-            $newOrderLine->setOrderId($orderId);
-            $newOrderLine->setProductname($line[0]);
-            $newOrderLine->setQuantity($line[1]);
-            $newOrderLine->setLineamount($line[2]);
+            $newOrderLine->setOrderId($orderCreated);
+            $newOrderLine->setProductname($line["productName"]);
+            $newOrderLine->setQuantity($line["quantity"]);
+            $newOrderLine->setLineamount($line["lineAmount"]);
             $this->m_entityManager->persist($newOrderLine);
             $this->m_entityManager->flush();
         }

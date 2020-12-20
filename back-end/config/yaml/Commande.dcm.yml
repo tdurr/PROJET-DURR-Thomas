@@ -17,8 +17,11 @@ Commande:
             precision: 10
             scale: 2
         date:
-            type: datetime
+            type: text
             nullable: true
+            length: null
+            options:
+                fixed: false
         loginclient:
             type: text
             nullable: true

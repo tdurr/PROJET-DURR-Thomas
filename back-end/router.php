@@ -47,6 +47,6 @@ return function (App $app) {
 
     $app->group('/order', function (Group $group) {
         $group->post('/buy', "App\Controllers\OrderController:buy");
-        $group->get('/{client}', "App\Controllers\OrderController:getClientOrders");
+        $group->get('/{login}', "App\Controllers\OrderController:getClientOrders");
     });
 };

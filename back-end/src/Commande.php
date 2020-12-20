@@ -18,7 +18,7 @@ class Commande
     private $amount;
 
     /**
-     * @var \DateTime|null
+     * @var string|null
      */
     private $date;
 
@@ -65,7 +65,7 @@ class Commande
     /**
      * Set date.
      *
-     * @param \DateTime|null $date
+     * @param string|null $date
      *
      * @return Commande
      */
@@ -79,7 +79,7 @@ class Commande
     /**
      * Get date.
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getDate()
     {
