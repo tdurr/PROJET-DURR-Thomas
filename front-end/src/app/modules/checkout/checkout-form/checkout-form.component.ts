@@ -86,12 +86,14 @@ export class CheckoutFormComponent implements OnInit {
       newOrderLines.push(line);
     }
 
-    let date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
+    const date = new Date()
+    date.setHours(date.getHours() + 1);
+    const formattedDate = date.toISOString().replace(/T/, ' ').replace(/\..+/, '');
 
     const newOrder : Order = new Order(
       null,
       this.cartWorth,
-      date,
+      formattedDate,
       this.login,
       newOrderLines
      )
@@ -102,7 +104,14 @@ export class CheckoutFormComponent implements OnInit {
 
       if (response.success) {
             this.store.dispatch(new EmptyCart());
-            this.router.navigate(['/customer/infos']);
+            this.router.navigate(['/customer/infos']).then((navigated: boolean) => {
+              if (navigated) {
+                // snackbar
+                var x = document.getElementById("snackbar");
+                x.className = "show";
+                setTimeout(function(){ x.className = x.className.replace("show", ""); }, 8000);
+              }
+            });
       }
 
       if (!response.success) {

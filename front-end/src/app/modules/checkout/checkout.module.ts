@@ -7,17 +7,19 @@ import { CheckoutService } from './../checkout/service/checkout.service';
 import { CheckoutRoutingModule } from './checkout-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiHttpInterceptor } from './api-http-interceptor';
+import { CardNumberPipe } from './pipes/card-number.pipe';
 
 @NgModule({
   declarations: [
     CheckoutFormComponent,
+    CardNumberPipe,
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CheckoutRoutingModule
+    CheckoutRoutingModule,
   ],
   providers: [
     CheckoutService,

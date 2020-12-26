@@ -14,7 +14,6 @@ import { AddToCart } from '../../../store/actions/cart-action';
 export class ProductListComponent implements OnInit {
 
   public products : Observable<Product[]>
-  public shownProducts : Observable<Product[]>
   public nameFilter : string = '';
   public categoryFilter : string = '';
   public priceFilter : number = 0;
@@ -23,7 +22,6 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.products = this.dataService.getProducts();
-    //this.shownProducts = this.products;
   }
 
   public onFilterEvent(filters: Observable<any>): void {

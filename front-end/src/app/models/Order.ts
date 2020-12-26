@@ -2,15 +2,15 @@ import { OrderLine } from './OrderLine';
 
 export class Order { 
 
-    num : number;
+    id : number;
     amount : number;    
     date : string;    
     loginClient : string;   
     lignes : OrderLine[];   
 
     
-    constructor (num: number, amount : number, date : string, loginClient : string, lignes : OrderLine[])    {      
-      this.num = num;
+    constructor (id: number, amount : number, date : string, loginClient : string, lignes : OrderLine[])    {      
+      this.id = id;
       this.amount = amount;         
       this.date = date;     
       this.loginClient = loginClient; 

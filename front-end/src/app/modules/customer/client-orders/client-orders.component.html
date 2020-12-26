@@ -5,10 +5,11 @@
             <th>Date</th>
             <th>Montant</th>
         </tr>
-        <tr *ngIf="(orderObs | async) as order">
-            <td>{{ order.num }}</td>
-            <td>{{ order.date }}</td>
-            <td>{{ order.amount }}</td>
+        <tr *ngFor="let order of orderObs | async">
+            <td>{{ order.id }}</td>
+            <td>{{ order.date | date:'dd/MM/yyyy - H:mm:s' }}</td>
+            <td>{{ order.amount | currency:'EUR' }}</td>
         </tr>
     </table>
+    <br>
 </div>

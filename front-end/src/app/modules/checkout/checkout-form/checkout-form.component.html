@@ -4,26 +4,28 @@
         <fieldset>
             <legend id="form-title">Payement</legend>
 
+            <label for="numeroCarte">N° de carte bancaire</label>
             <input formControlName="numeroCarte" class="inputs form-control" inputmode="numeric" type="tel" id="numeroCarte" placeholder="xxxx xxxx xxxx xxxx" [ngClass]="{'input-error': !numeroCarte.valid && numeroCarte.value, 'input-success': numeroCarte.valid}">
         
             <div *ngIf="numeroCarte.invalid && (numeroCarte.dirty || numeroCarte.touched)" class="error"> 
                 <p *ngIf="numeroCarte.errors.required">Numéro de carte invalide.</p>
             </div> 
 
+            <label for="numeroCarte">Mois d'expiration</label>
             <input formControlName="validiteMois" class="inputs form-control" type="text" id="validiteMois" placeholder="xx" [ngClass]="{'input-error': !validiteMois.valid && validiteMois.value, 'input-success': validiteMois.valid}">
             
             <div *ngIf="validiteMois.invalid && (validiteMois.dirty || validiteMois.touched)" class="error"> 
                 <p *ngIf="validiteMois.errors.required">Mois non valide.</p>
             </div> 
 
+            <label for="numeroCarte">Année d'expiration</label>
             <input formControlName="validiteAnnee" class="inputs form-control" type="text" id="validiteAnnee" placeholder="xx" [ngClass]="{'input-error': !validiteAnnee.valid && validiteAnnee.value, 'input-success': validiteAnnee.valid}">
         
-            
-
             <div *ngIf="validiteAnnee.invalid && (validiteAnnee.dirty || validiteAnnee.touched)" class="error"> 
                 <p *ngIf="validiteAnnee.errors.required">Annee non valide.</p>
             </div>
 
+            <label for="cvc">CVC</label>
             <input formControlName="cvc" class="inputs form-control" type="textr" id="cvc" placeholder="xxx" [ngClass]="{'input-error': !cvc.valid && cvc.value, 'input-success': cvc.valid}">
         
             <div *ngIf="cvc.invalid && (cvc.dirty || cvc.touched)" class="error"> 
@@ -39,6 +41,4 @@
             <button type="button" id="btn-autofill" class="btn btn-warning btn-lg btn-block" (click)="fillInputs()">Saisie automatique</button>
         </fieldset>
     </form>
-
-    <br>
 </section>
