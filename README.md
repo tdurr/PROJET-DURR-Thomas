@@ -93,7 +93,3 @@ CREATE TABLE LigneDeCommande
     CONSTRAINT FK_Commande FOREIGN KEY(orderId) REFERENCES Commande(id)
 );
 ```
-
-**Disponible sur stackblitz:**
-
-[https://stackblitz.com/github/tdurr/projet/tree/master/front-end](https://stackblitz.com/github/tdurr/projet/tree/master/front-end)
