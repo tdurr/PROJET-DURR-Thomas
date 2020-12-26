@@ -14,7 +14,7 @@ ng serve --open
 
 **API:**
 
-L'API est déployée sur Heroku comme expliqué plus bas. Cependant pour utiliser l'API en local:
+Pour utiliser l'API en local:
 
 1) Ne pas oublier de se mettre en localhost dans le dossier `environnement` du front-end angular
 
@@ -23,7 +23,18 @@ L'API est déployée sur Heroku comme expliqué plus bas. Cependant pour utilise
 php -S localhost:8080 -t public
 ```
 
-**Base de données PostgreSQL (aussi déployée sur Heroku)**
+Les endpoints sont:
+```bash
+/user/register # Nouveau compte
+/user/login # Se connecter
+/user/{login} # Informations sur son compte
+/product/all # Liste des produits
+/product/{id} # Fiche d'un produit
+/order/buy # Passer une commande
+/order/{login} # Historique des commandes par utilisateur
+```
+
+**Base de données PostgreSQL déployée sur Heroku**
 
 Table Client
 ```sql
@@ -86,26 +97,3 @@ CREATE TABLE LigneDeCommande
 **Disponible sur stackblitz:**
 
 [https://stackblitz.com/github/tdurr/projet/tree/master/front-end](https://stackblitz.com/github/tdurr/projet/tree/master/front-end)
-
-
-## Heroku
-L'API est déployée sur `Heroku` pour que l'utilisation soit plus pratique pour tout le monde. Du coup seule l'app Angular est à lancer avec un `ng serve --open`.
-
-```diff
-- /!\ Lors de la première utilisation depuis un certain temps,
-- il se peut qu'il faille patienter quelques secondes avant d'avoir une réponse de l'API
-- car elle se met en "sommeil" après une longue inactivité. /!\
-```
-
-Adresse de l'API: [https://tp05-tdr.herokuapp.com/](https://tp05-tdr.herokuapp.com/)
-
-Les endpoints sont:
-```bash
-https://tp05-tdr.herokuapp.com/user/register
-https://tp05-tdr.herokuapp.com/user/login
-https://tp05-tdr.herokuapp.com/user/{login}
-https://tp05-tdr.herokuapp.com/product/all
-https://tp05-tdr.herokuapp.com/product/{id}
-```
-
-Le git de l'API sur lesquels sont basés les déploiements est un git privé identique au contenu du dossier `back-end`. Contactez-moi si il y a un quelconque soucis avec celle-ci svp. Je la re-déploierai.
