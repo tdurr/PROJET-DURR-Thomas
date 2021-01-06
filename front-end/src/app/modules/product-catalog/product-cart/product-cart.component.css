@@ -25,7 +25,7 @@ td {
     text-align: center;
 }
 
-tr:nth-child(even) {
+tr:nth-child(odd) {
     background-color: #dddddd;
 }
 
@@ -34,7 +34,21 @@ tr:nth-child(even) {
     text-align: center;
 }
 
+.container-btn {
+    display: flex;
+    width: 100%;
+}
+
 #empty-btn {
-    margin-top: 50px;
-    margin-bottom: 100px;
+    width: 40%;
+}
+
+#buy-btn {
+    width: 40%;
+    margin-right: 10%;
+    margin-left: 5%;
+}
+
+.turqBack {
+    background-color: lightseagreen !important;
 }
