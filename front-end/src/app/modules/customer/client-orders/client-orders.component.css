@@ -32,3 +32,15 @@ tr:nth-child(odd) {
 #delete-btn {
     margin-top: 50px;
 }
+
+.turqBack {
+    background-color: lightseagreen !important;
+}
+
+.noBack {
+    background-color: transparent !important;
+}
+
+.noBorder {
+    border: 0px;
+}

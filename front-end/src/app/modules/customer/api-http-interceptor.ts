@@ -2,7 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
-import { ClientState } from 'src/app/store/states/client-state';
+import { ClientState } from './../../store/states/client-state';
 
 @Injectable()
 export class ApiHttpInterceptor implements HttpInterceptor {

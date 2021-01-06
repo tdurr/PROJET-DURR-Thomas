@@ -3,8 +3,8 @@ import { Order } from '../../../models/Order';
 import { Store } from '@ngxs/store';
 import { Observable, of } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
-import { CustomerService } from './../services/customer.service';
-import { ClientState } from './../../../store/states/client-state';
+import { CustomerService } from '../services/customer.service';
+import { ClientState } from '../../../store/states/client-state';
 
 @Component({
   selector: 'app-client-orders',

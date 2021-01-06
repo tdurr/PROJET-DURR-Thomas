@@ -65,7 +65,7 @@ class OrderController
             $oneOrder["amount"] = $order->getAmount();
             $oneOrder["date"] = $order->getDate();
             $oneOrder["loginClient"] = $order->getLoginclient();
-            $oneOrder["lines"] = $orderLines;
+            $oneOrder["lignes"] = $orderLines;
 
             // et enfin on ajoute la commande complete à la liste des commandes passées par le client
             array_push($orders, $oneOrder);
