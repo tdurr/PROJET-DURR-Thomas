@@ -5,18 +5,21 @@ Il y a un premier dossier qui contient tout le front-end Angular et un second do
 
 ## Utiliser le projet
 
-Reminder: `npm install` dans front-end/ et `composer install` dans back-end/
-
 **Site Angular:**
+
 https://projet-durr-thomas.herokuapp.com/
 
 **En local:**
+
+*Reminder: `npm install` dans front-end/ et `composer install` dans back-end/*
+
 Clone le repository puis dans le dossier front-end/
 ```
 ng serve --open
 ```
 
 **API:**
+
 https://tp05-tdr.herokuapp.com/
 
 Pour utiliser l'API en local:
