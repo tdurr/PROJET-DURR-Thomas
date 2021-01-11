@@ -6,7 +6,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Doctrine\ORM\EntityManager;
 use Commande;
-use LigneDeCommande;
+use Lignedecommande;
 
 class OrderController
 {
@@ -34,7 +34,7 @@ class OrderController
             ->withStatus(204);
         }
 
-        $repo = $this->m_entityManager->getRepository("LigneDeCommande");
+        $repo = $this->m_entityManager->getRepository("Lignedecommande");
 
         // $orders = les commandes du client
         $orders = [];
@@ -48,7 +48,7 @@ class OrderController
             // on initialise une liste de lignes pour la commande
             $orderLines = [];
 
-            // pour chaque lignes de commande trouvée on récupère chaque colonne de la table LigneDeCommande
+            // pour chaque lignes de commande trouvée on récupère chaque colonne de la table Lignedecommande
             foreach ($dbOrderLines as $line) {
                 $oneLine = [];
                 $oneLine["productName"] = $line->getProductname();
@@ -121,7 +121,7 @@ class OrderController
         }
 
         foreach ($lines as $line) {
-            $newOrderLine = new LigneDeCommande;
+            $newOrderLine = new Lignedecommande;
             $newOrderLine->setOrderId($orderCreated);
             $newOrderLine->setProductname($line["productName"]);
             $newOrderLine->setQuantity($line["quantity"]);
