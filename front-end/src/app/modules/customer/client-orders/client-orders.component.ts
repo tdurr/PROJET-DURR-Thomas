@@ -24,6 +24,7 @@ export class ClientOrdersComponent implements OnInit {
         mergeMap(
           (login: string): Observable<Order[]> => {
             if (login !== '') {
+              
               return this.customerService.getOrders(login);
             }
             else {
